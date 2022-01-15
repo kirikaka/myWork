@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/myPersonalInfo_personal2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-3dp" />
+
+
+    <CheckBox
+        android:id="@+id/yesterday_exercise"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myPersonalInfo_personal2"
+        android:layout_marginTop="14dp"
+        android:text="어제 운동을 했는가?"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/which_work_out_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/yesterday_exercise"
+        android:layout_marginTop="14dp"
+
+        android:text="오늘 운동 뭐하지..." />
+
+    <TextView
+        android:id="@+id/today_work_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/which_work_out_btn"
+        android:layout_marginTop="12dp"
+        android:hint="오늘 할 운동은?"
+        android:textAlignment="center"
+        android:textSize="23dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/today_work_out"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            app:srcCompat="@drawable/workout_basic" />
+
+        <TextView
+            android:id="@+id/use_calorie"
+            android:layout_width="394dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="이 운동이 소모하는 칼로리?"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <ProgressBar
+            android:id="@+id/show_hard_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

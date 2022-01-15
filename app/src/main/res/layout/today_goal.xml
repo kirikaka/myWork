@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/myPersonalInfo_goal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <CheckBox
+        android:id="@+id/exercise_check"
+        android:layout_width="189dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myPersonalInfo_goal"
+        android:layout_marginTop="6dp"
+        android:text="운동을 하였는가?" />
+
+    <CheckBox
+        android:id="@+id/calrorie_check"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exercise_check"
+        android:text="식단 관리를 했는가?" />
+
+    <TextView
+        android:id="@+id/if_not_diet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/if_not_exercise"
+        android:layout_alignBaseline="@id/calrorie_check"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="0dp"
+        android:layout_toRightOf="@id/calrorie_check"
+        android:text='------------->    "돼지"'
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/if_not_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myPersonalInfo_goal"
+        android:layout_alignBaseline="@id/exercise_check"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="0dp"
+        android:layout_toRightOf="@id/exercise_check"
+        android:text='------------->"의지 박약"'
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/make_a_goal_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calrorie_check"
+        android:layout_marginTop="10dp"
+        android:text="오늘의 목표 달성?" />
+
+    <RelativeLayout
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/make_a_goal_btn">
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="406dp"
+            android:layout_height="303dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/get_reward_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendar"
+        android:layout_marginTop="5dp"
+        android:text="성실히 운동 중이라면?" />
+
+    <Button
+        android:id="@+id/take_care_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_reward_btn"
+        android:layout_marginTop="-5dp"
+        android:text="번아웃이 느껴진다면?" />
+
+</RelativeLayout>

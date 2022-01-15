@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="285dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/menu_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="먹은 메뉴 추가"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/name_of_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="음식 이름" />
+
+    <EditText
+        android:id="@+id/menu_update_input"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="무엇을 먹었는가?"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/menu_calorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="음식 칼로리" />
+
+    <EditText
+        android:id="@+id/calorie_input"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="칼로리량 입력"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/update_dialog_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="반영" />
+</LinearLayout>
+

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/myPersonalInfo_diet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/oneday_calrorie"
+        android:layout_width="106dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/myPersonalInfo_diet"
+        android:layout_marginTop="10dp"
+        android:text="총 섭취 칼로리"
+        android:textAlignment="center"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/oneday_calrorie_input"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:layout_below="@id/myPersonalInfo_diet"
+        android:layout_alignBottom="@id/oneday_calrorie"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="-2dp"
+        android:layout_toRightOf="@id/oneday_calrorie"
+        android:ems="10"
+        android:hint="오늘 먹을만큼만 설정"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/present_calrorie"
+        android:layout_width="106dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/oneday_calrorie"
+        android:layout_marginTop="10dp"
+        android:text="섭취 칼로리"
+        android:textAlignment="center"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/present_calrorie_input"
+        android:layout_width="298dp"
+        android:layout_height="47dp"
+        android:layout_below="@id/oneday_calrorie_input"
+        android:layout_alignBottom="@id/present_calrorie"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toRightOf="@id/present_calrorie"
+
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/left_calrorie"
+        android:layout_width="106dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/present_calrorie"
+        android:layout_marginTop="5dp"
+        android:text="남은 칼로리"
+        android:textAlignment="center"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/left_calrorie_input"
+        android:layout_width="303dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/present_calrorie_input"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/left_calrorie"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:id="@+id/dynamicLIst"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/left_calrorie_input"
+        android:layout_marginTop="-1dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/today_list"
+                android:layout_width="210dp"
+                android:layout_height="37dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginBottom="10dp"
+                android:text="오늘 먹은 식단 추가"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/popup_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="3dp"
+                android:text="팝업메뉴" />
+
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/today_my_menu"
+            android:layout_width="match_parent"
+            android:layout_height="267dp"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/view_calrorie_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="칼로리표 보기" />
+
+    <ImageView
+        android:id="@+id/list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/calrorie_list" />
+
+
+</RelativeLayout>
