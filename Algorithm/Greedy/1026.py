@@ -1,10 +1,11 @@
 n=int(input())
 a=list(map(int,input().split()))
 b=list(map(int,input().split()))
-c=[]
+result=0
 a.sort()
 for i in range(n):
     loc=b.index(max(b))
-    max(b)*a[i]
-    b.pop(loc)
+    result +=max(b)*a[i]
+    del b[loc]
+print(result)
     
