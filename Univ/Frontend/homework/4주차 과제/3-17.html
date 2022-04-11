@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>편리한 숫자입력</title>
+</head>
+
+<body>
+    <h3>홈 제어 시스템 - 온도 조절</h3>
+    <input type="number" min="0.0" max="10.0" step="0.5"><br><br> 온도 설정 : 10&deg;
+    <input type="range" min="10" max="30" list="temperatures"> 30&deg;
+    <datalist id="temperatures">
+        <option value="12" label="low"></option>
+        <option value="20" label="Medium"></option>
+        <option value="25" label="High"></option>
+    </datalist>
+
+</body>
+
+</html>
