@@ -1,0 +1,151 @@
+---
+title: "Linear Regression Example 2"
+author: "Sangmin Lee"
+output: 
+  html_document: 
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 8
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    toc_float: true
+    code_folding: "show"
+    theme: spacelab
+    highlight: pygments
+---
+
+```{r setup, include=FALSE}
+#install.packages("knitr")
+#install.packages("lattice")
+#install.packages("UsingR")
+#install.packages("psych")
+library(knitr)
+library(lattice)
+library(UsingR)
+library(psych)
+knitr::opts_chunk$set(echo = TRUE)
+```
+<br/>\
+
+# 데이터 설명 및 로드
+
+```{r message=FALSE}
+# 데이터: homeprice는 2001년 New Jersey의 부동산 가격 정보
+# 변수 설명: 방의 수, 화장실 수, 집의 위치 등 다양한 변수로 구성, 변수에 따라 집 가격 예측 가능
+# 특히, neighborhood는 이웃평가에 대한 설문조사 점수로 1~5 사이값을 갖음
+data(homeprice)
+attach(homeprice)
+names(homeprice)
+```
+
+```{r}
+summary(homeprice)
+```
+
+# 변수의 상관성을 보자.
+```{r}
+subset <- cbind(homeprice$sale, homeprice$full, homeprice$bedrooms, homeprice$rooms, homeprice$neighborhood)
+pairs.panels(subset)
+```
+    - 변수1,5, 변수3,4 간에 강한 선형상관성이 있음으로 나왔다.
+    - 변수1,5: 집값 homeprice가 이웃 평가 neighhood에 큰 영향을 받는다는 결과로 해석할 수 있다. 선형회귀 모델 구축 시 반드시 포함해야 한다.
+    - 변수3,4: bedrooms와 rooms는 유사한 설명력을 갖고 있는 것으로 보인다. 둘을 독립변수로 사용하는 것은 중복(redundant)된 의미로, 다중공선성 문제가 된다. rooms만으로 모델을 구축하자.
+    
+## 집의 방의 갯수에 따른 집값 추이를 알아보자.
+```{r}
+m <- lm(sale ~ rooms, homeprice)
+plot(homeprice$rooms, homeprice$sale)
+abline(coef(m))
+summary(m)
+```
+
+## 이웃에 대한 평가에 따른 
+
+```{r}
+# 평가를 factor  값으로 변환 (좋고 나쁨으로 보지 않겠다..)
+homeprice$neighborhood <- as.factor(homeprice$neighborhood)
+
+panel.lm <- function(x, y) {
+  panel.xyplot(x, y)
+  panel.abline(lm(y ~ x))
+}
+
+xyplot(sale ~ rooms | neighborhood, panel = panel.lm, data = homeprice)
+```
+    - 설명: X축은 방의 수, Y축은 판매가격, 그리고 각 차트를 구분한 1-5점 사이는 이웃에 대한 평가 입니다.
+    - 해석1: 이웃에 대한 점수가 낮기보다는 높을수록 판매가와 방의 수 모두 증가하는 패턴을 볼 수 있습니다.
+    - 해석2: 이웃에 대한 평가 별 관측치가 단일하지 못합니다. 5단계 -> 3단계 정도로 나누어 분석해볼 필요가 있겠습니다.
+
+```{r}
+# 다시 numeric 값으로 변환
+homeprice$neighborhood <- as.numeric(homeprice$neighborhood)
+
+nbd <- as.numeric((cut(neighborhood, c(0,2,3,5), labels=c(1,2,3))))
+table(nbd)
+
+xyplot(sale ~ rooms | nbd, panel = panel.lm, layout = c(3, 1))
+```
+    - 설명1: 상위의 차트와 동일하게게 x축 방의 수, Y축 판매가격, 그리고 각 차트는 이웃에 대한 평가로 동일합니다. 하지만, 이웃 평가를 3단계로 등간화 했습니다.
+    - 설명2: 상대적으로 관측수가 적은 이웃평가 점수 관측치가 있으므로, 3그룹으로 다시 묶어서 분류
+    - 설명3: 각 차트 별로 (왼쪽부터) 하, 중, 상의 이미
+    - 해석: 이웃 평가 점수가 높은 경우, 판매가도 높고 방의수도 많다고 해석할 수 있습니다. 하지만, 직접적인 인과관게를 의미하는 것은 아닙니다.
+
+# Bedroom & neighborhood 회귀분석
+    
+```{r}
+model2 <- lm(sale ~ bedrooms + nbd)
+
+summary(model2)
+```
+    - 잔차(residual) 해석: 윗쪽에서 방의 수(rooms) 만으로 예측했던 모델 대비, 잔차(residual)이 크게 줄어들었음을 알 수 있습니다.
+    - 변수 유의성(p-value) 해석: bedrooms, nbd의 p-value 모두 유의수준 0.05 보다 작습니다. 그러므로, 95%의 신뢰도를 기준으로 변수가 없을 때보다 있을 때 유의미하다고 해석합니다.
+    - 변수 영향도 해석: bedrooms, nbd 변수의 파라미터(Beta) 값은 각 35,84, 115.32 입니다. 방 1개 추가시 가격은 $35,000 증가하고, 이웃 평가 1단계가 증가시 $115,320 증가합니다. nbd가 bedrooms 보다 가격 상승에 큰 영향이 있다고 설명합니다.
+    * 앞에서 설명하지 않았는데, 유의수준(*)을 의미하는 마크의 갯수가 늘어날수록 통계적으로 귀무가설을 기각할 확률이 커집니다. 이 유의수준은 사람이 지정하는 Hyperparameter입니다.
+
+# 변수에 Full bathroom을 추가하여 회귀분석
+
+```{r}
+model3 <- lm(sale ~ bedrooms + nbd + full)
+summary(model3)
+```
+    - Full bathroom이 설치되었는지에 따라 $28,000 가치가 오른다는 평가가 나왔습니다. 하지만, 유의수준(alpha)을 어떻게 정하느냐에 따라, 유의하지 못한 변수가 될 수 있습니다.
+
+# full bathroom 변수 제거 전후에 대한 분산분석
+```{r}
+anova(model2, model3)
+```
+    - p-value가 0.1297이 나왔다. 여기서 귀무가설은 "두 모델 간 차이가 없다.", 대립가설은 "두 모델 간 차이가 있다." 이다. p-value가 유의수준 0.05보다 크기 때문에 귀무가설을 기각할 수 없다. 즉, full bathroom을 포함하거나 안하거나 차이가 없다고 해석한다.
+
+# Dummary variable 추가
+  - 앞에서 이웃 평간 점수를 5등간 -> 3등간 했던 것은 질적자료의 의미가 큽니다.
+  - 회귀분석에서는 독립변수가 nuemric 이어야 하는데, factor인 경우 dummy variable로 변환하여 사용해야 합니다.
+```{r}
+# R에서는 변수명에 마침표(.)가 들어가도 됩니다.
+nbd.f <- as.factor(nbd)
+homeprice <- cbind(homeprice, nbd.f)
+str(homeprice)
+```
+    - Factor 타입인 nbd를 numeric이 아닌 dummy 변수, nbd.lv1, nbd.lv2, nbd.lv3 생성
+```{r}
+#nbd.lv1 <- (nbd == "1")*1 lv1은 '0'이라는 의미가 이미 있으므로 생략
+nbd.lv2 <- (nbd == "2")*1
+nbd.lv3 <- (nbd == "3")*1
+homeprice <- cbind(homeprice, nbd.lv2, nbd.lv3)
+str(homeprice)
+```
+<font color='Red'>하지만, 사실 R의 lm 모델 구축 시에는 자동적으로 factor 타입을 dummary variables로 변환해주고 분석</font><br/>
+    - 아래 두가지 방식으로 모델링한 결과를 보자.
+
+```{r}
+model4 <- lm(sale ~ bedrooms + nbd.lv2 + nbd.lv3)
+summary(model4)
+```
+    - p-value를 봤을 때, 모든 변수 의미한 결과가 나왔다.
+
+```{r}
+model5 <- lm(sale ~ bedrooms + nbd.f)
+summary(model5)
+```
+    - model4, model5 결과가 동일한 것을 알 수 있다.
+<font color='red'> 데이터 분석 시, numeric 보다 factor 타입의 qualitative variable이 함께 포함되는 경우가 잦다. R에서 선형회귀 분석 시, 필히 factor 타입으로 변환 후에 모델을 구축해야 한다. </font>

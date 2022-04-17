@@ -1,0 +1,156 @@
+---
+title: "Linear Regression Example 1"
+author: "Sangmin Lee"
+output: 
+  html_document: 
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 8
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    toc_float: true
+    code_folding: "show"
+    theme: spacelab
+    highlight: pygments
+---
+
+```{r setup, include=FALSE}
+#install.packages("knitr")
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+<br/>\
+
+# 단순선형회귀 모형 구축
+
+```{r}
+# 단독 독립변수 am 만으로 단순선형회귀모델 만들기
+# 변수 설명: mpg (연비)
+# 변수 설명: am (변속기 auto, manual)
+model <- lm(mpg ~ am, data=mtcars)
+summary(model)
+```
+    - [잔차 (Residuals)] 학습모델의 오차(e)
+    - [계수 (Coefficient)] 선형회귀의 베타(B)값을 의미
+    - (Intercept) -> B0
+    - [Estimate] 각 파라미터의 점추정 값 (Point estimator)
+    - [Std. Error] 각 파라미터의 표준편차 (Interval estimator 계산을 위함)
+    - [t value] 각 파라미터 추정의 유의성을 위한 T 통계량(statistic)
+    - [Pr(>|t|)] p-value 의미 (유의수준보다 작으면, 귀무가설 기각)
+    - [Signif. codes] 유의수준 (Significant level) 의미
+    - [R-squared] 결정계수 SSR/SST = 1 - (SSE/SST)
+    - [Adjusted R-squared] 수정 결정계수 (변수 증가 방지 메커니즘)
+    - [F-statistic] F 통계량, SSR/SSE 통계량 값과 해당 p-value 값
+    
+    - p-value 값으로 봤을 때 회귀계수 모두 유의함
+    - 따라서, 본 회귀모델을 통해 차량은 평균적으로 17.147mpg의 연비를 갖는데,
+      수동변속기 차량은 7.245mpg 만큼 연비 효율이 높다.
+    - 또한, 이 선형모델은 R-squared 값에 의해 35.98% 정도의 설명력이 있다.
+
+
+# 다중선형회귀 모형 구축
+
+```{r}
+# 연비 예측을 위해 모든 독립변수를 사용해서 다중회귀분석 실시
+multi_model <- lm(mpg ~ ., data = mtcars)
+summary(multi_model)
+```
+    
+    - p-value 값에 의해서 설명력 없는 disp, vs, carb 제거
+
+```{r}
+# 연비 예측을 위해 disp, vs, carb외 독립변수로 모델 구축
+multi_model <- lm(mpg ~ cyl + hp + drat + wt + qsec + am + gear, data = mtcars)
+summary(multi_model)
+```
+  
+    - p-value 값에 의해서 설명력 없는 cyl, gear 제거
+
+```{r}
+# 연비 예측을 위해 cyl, gear 추가로 제거하고 모델 구축
+multi_model <- lm(mpg ~ hp + drat + wt + qsec + am, data = mtcars)
+summary(multi_model)
+```
+
+    - p-value 값에 의해서 설명력 없는 drat 제거
+
+```{r}
+# 연비 예측을 위해 drat 추가로 제거하고 모델 구축
+multi_model <- lm(mpg ~ hp + wt + qsec + am, data = mtcars)
+summary(multi_model)
+```
+    - p-value 값에 의해서 설명력 없는 hp 제거
+
+```{r}
+# 연비 예측을 위해 hp 추가로 제거하고 모델 구축
+multi_model <- lm(mpg ~ wt + qsec + am, data = mtcars)
+summary(multi_model)
+```
+    - 유의수준(5%)를 기준으로, wt, qsec, am 모두 유의한 변수로 설명됨.
+    - R-squared 값이 0.8497로 선형모델이 84.97% 설명력이 있다고 해석함.
+
+
+# 모델 비교 (분산분석; ANOVA)
+
+```{r}
+anova(model, multi_model)
+```
+    - 단순선형회귀 모델 model 과 다중선형회귀인 multi_model 간 분산의 차이가 있는지 가설검정
+    - p-value가 1.55e-09로 0에 가깝기 때문에, multi_model 선형모델이 유의함을 나타냄.
+    
+    - 여기서 평균을 비교하지 않고 분산을 비교한 이유는 평균이 아니라 얼마나 퍼져있는지 보는게 더 중요하기 때문이다. --> 실험 결과의 최적성 보다는 균질함을 보기 위함임.
+
+# 모형 진단 그래프
+```{r}
+par(mfrow = c(2,2))
+plot(multi_model)
+```
+    - 하나씩 모델에 대해서 해석을 해봅시다.
+
+```{r}
+# 첫번째, Residual vs. Fitted
+plot(multi_model, which = 1)
+```
+
+    - [Residual vs. Fitted] 실제(y)와 예측(predicted y)값 사이의 residual(잔차) 확인
+      . 각 관측치에 대해서 smooting 된 값을 봤을 때, Fiat, Corolla는우리 모델에서 예측한 것보다 훨씬 좋다는 것을 의미.
+  
+
+```{r}
+# 두번째, Quantile-Quantile Plot
+plot(multi_model, which = 2)
+```
+
+    - [Normal Q-Q] Q-Q는 Quantile-Quantile Plot의 줄임말이다.
+      . 잔차(residual)가 정규분포(Normal distribution)를 따르는지 확인하기 위한 차트
+      . Corolla, Chrysler Imperial은 정규성에 잘 맞지 않는 것으로 해석 가능.
+
+```{r}
+# 세번째, Quantile-Quantile Plot
+plot(multi_model, which = 3)
+```
+
+    - [Scale-Location] 이 차트는 선형모델이 예측한 Y(predicted Y)와 잔차 간의 관계를 비교.
+      . X축은 예측된 Y 값 (predicted Y)
+      . Y축은 표준화 잔차 (Standardized residuals)
+    - Y값이 크게 예측된 관측치들에 대해서 더 큰 값으로 틀리고 있다(잔차가 크다)라고 해석가능하다.
+    - 이상치(Outlier)가 있는지 여부를 파악 가능. 여기서 이상치란 무조건 제외해야 하는 관측치가 아니라, 모델에 의해 설명되지 않는 관측치라고 볼 수 있다.
+
+```{r}
+# 네번째, Cook's distance
+plot(multi_model, which = 4)
+```
+
+    - [Cook's distance] 개별 관측치가 선형모델의 파라미터에 끼친 영향도
+      . 즉, 회귀 직선의 기울기, 절편에 큰 영향을 끼친 관측치를 탐색하는 그래프
+    - Chrysler Imperial, Merc 230, Fiat 128이 꽤 큰 비율로 영향을 주었음을 나타냄
+
+```{r}
+# 다섯번째, Residuals vs. leverage
+plot(multi_model, which = 5)
+```
+    - [Leverage] 이 차트에서는 독립변수이 극단적에 치우쳐 있지는 않은 지 확인
+      . X축이 레버리지, Y축이 잔차
+      . Outlier 성 데이터 또는 극단값을 갖는 데이터를 걸러내는데 유의미
+        예시. 대부분 1~5 scale을 갖는데, 한 데이터만 1000 값을 갖는다면 모델학습에 좋지 않은 영향.
