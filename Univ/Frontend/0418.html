@@ -4,9 +4,44 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Relative 배치</title>
+  <style>
+    div{
+      display:inline-block;
+      height: 50px;
+      width: 50px;
+      border : 1px solid lightgray;
+      text-align: center;
+      color : white;
+      background: red;
+    }
+    #down:hover{
+      position :relative;
+      left: 20px;
+      top: 20px;
+      background: green;
+
+    }
+    #up:hover{
+      position: relative;
+      right: 20px;
+      bottom: 20px;
+      background: green;
+    }
+  </style>
+  
+
 </head>
-<body>
+<body><
+  <h3>상대배치, relative</h3>
+  <hr>
+  <div>T</div>
+  <div id="down">h</div>
+  <div>a</div>
+  <div>n</div>
+
+  <div id="up">k</div>
+  <div>s</div>
   
 </body>
 </html>
