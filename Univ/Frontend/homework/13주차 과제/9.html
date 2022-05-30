@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let text=["빨간자전거를 타고 서울, 대전, 대구, 부산 찍고, 목포, 인천을 거쳐 달린다",
+            "철학책과 문학 작품 30권씩 읽기",
+            "수영 2시간, 달리기 10km씩, 싸이클 20km씩 꾸준히",
+            "개발자 커뮤니티등을 참고하며 자바스크립트 공부하기"];
+    let textDiv;
+    function init() {
+        textDiv = document.getElementById("textDiv");	
+        let liArray = document.getElementsByTagName("li");
+        for(i=0; i<liArray.length; ++i) {
+            liArray[i].onmouseover=over;
+		    liArray[i].onmouseout=hide;
+	    }
+    }
+    function over(e) {
+	    let n=0;
+	    switch(e.target.id) {
+		    case "0" : n = 0; 
+                break;
+		    case "1" : n = 1; 
+                break;
+		    case "2" : n = 2; 
+                break;
+		    case "3" : n = 3; 
+                break;
+	    }
+	    settextDiv(text[n], e);	
+    }
+    function settextDiv(text, e) {
+	    textDiv.innerHTML = text;
+      textDiv.style.border = "1px solid green";
+      textDiv.style.backgroundColor = "aliceblue";
+	    textDiv.style.left = e.x + "px";
+	    textDiv.style.top = e.y + "px";
+	    textDiv.style.visibility = "visible";
+	    textDiv.style.width = "150px";
+	    textDiv.style.height = "100px";
+    }
+    function hide() {
+	    textDiv.style.visibility = "hidden";
+    }
+  </script>
+</head>
+<body onload="init()">
+  <h3>아이템에 마우스를 올리면 설명 출력</h3>
+  <hr>
+  <p>
+    여름 방학 떄 하고 싶은 것들
+  </p>
+  <ul>
+    <li id="0">자전거로 대한민국일주</li>
+    <li id="1">책 100권 읽기</li>
+    <li id="2">철인 3종 경기 준비</li>
+    <li id="3">자바스크립트 정복</li>
+  </ul>
+  <div id="textDiv" style="position:absolute"></div>
+  
+</body>
+</html>

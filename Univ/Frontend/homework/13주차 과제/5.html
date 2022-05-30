@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바탕화면 클릭</title>
+  <script>
+
+  </script>
+</head>
+<body>
+  <h3>바탕 아무 곳에나 더블 클릭</h3>
+  <hr>
+  바탕 아무 곳이나 <span><strong>더블클릭</strong></span>하면
+  배경색이 랜덤하게 변합니다.
+  <script>
+    document.ondblclick=function(){
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      document.body.style.backgroundColor="rgb(" + r +","+g+","+b+")";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라디오 버튼을 클릭하면 이미지를 출력합니다.</title>
+  <script>
+    function changeimg(){
+      let a=null;
+      let fruitSearch=document.getElementsByName("fruit");
+      for(let i=0;i<fruitSearch.length;i++){
+        if(fruitSearch.checked==true){
+          a=fruitSearch[i];
+        }
+      }
+      let img=document.getElementById("fruitimage");
+      img.src="media/" + a.value + ".png";
+    }
+    
+
+  </script>
+</head>
+<body>
+  <h3>라디오 버튼을 클릭하면 이미지를 출력합니다</h3>
+  <hr>
+  <input type="radio" name="fruit" value="banana" onchange="drawImage()">바나나
+  <input type="radio" name="fruit" value="mango" onchange="drawImage()">망고
+  <input type="radio" name="fruit" value="apple" onchange="drawImage()" checked>사과
+  <br>
+  <img id="fruitimage" src="media/apple.png" alt="">
+  
+</body>
+</html>
