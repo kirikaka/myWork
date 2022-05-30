@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h3>어쩌구 저쩌구</h3>
+  <div id="sc">
+    마우스올리면 바껴?
+  </div>
+  <script>
+    var cover=document.getElementById("sc")
+    cover.addEventListener("mouseover",toY)
+    function toY(){
+      cover.style.backgroundColor="yellow"
+    }
+    cover.addEventListener("mouseout",toW)
+    function toW(){
+      cover.style.backgroundColor=""
+    }
+    
+  </script>
+</body>
+</html>

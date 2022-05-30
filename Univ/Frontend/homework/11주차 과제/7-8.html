@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math를 활용한 구구단 연습</title>
+  <script>
+    function randomInt(){
+      return Math.floor(Math.random()*9)+1;
+    }
+  </script>
+</head>
+<body>
+  <h3>Math를 활용한 구구단 연습</h3>
+  <hr>
+  <script>
+    let que=randomInt()+"*"+randomInt();
+
+    let user=prompt(que+"값은 얼마 입니까?",0);
+    if(user==null){
+      document.write("구구단을 종료합니다.")
+
+    }
+    else{
+      let ans=eval(que);
+      if(ans==user){
+        document.write("정답");
+
+      }
+      else{
+        document.write("아니오!");
+
+      }
+      document.write(que+"="+"<strong>"+ans+"</strong>입니다.<br>")
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>onload로 이미지 크기 출력</title>
+  <script>
+    function changeImage(){
+      var sel=document.getElementById("sel");
+      var img=document.getElementById("myImg");
+      img.onload=function(){
+        var mySpan=document.getElementById("mySpan");
+        mySpan.innerHTML=img.width+"x"+img.height;
+      }
+      var index=sel.selectedindex;
+      img.src=sel.options[index].value;
+    }
+  </script>
+</head>
+<body onload="changeImgae()">
+  <h3>onload로 이미지 크기 출력</h3>
+  <hr>
+  <form>
+    <select id="sel" onchange="changeImage()">
+      
+    </select>
+
+  </form>
+  
+</body>
+</html>

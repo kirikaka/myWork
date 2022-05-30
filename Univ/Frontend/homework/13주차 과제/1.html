@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1</title>
+  <script>
+    window.onblur=function(){
+      document.body.style.backgroundColor="lightgray";
+    }
+    window.onfocus=function(){
+      document.body.style.backgroundColor="white";
+    }
+  </script>
+</head>
+<body>
+    <h3>포커스와 onblur,onfocus</h3>
+    <hr>
+    브라우저 바깥에 마우스를 클릭하면
+     window 객체에 blur이벤트가 발생하고 다시 마우스를 클릭하면 
+     window객체에 focus이벤트가 발생한다.
+  
+</body>
+</html>

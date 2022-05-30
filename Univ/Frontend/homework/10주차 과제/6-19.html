@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>do - while 문</title>
+</head>
+<body>
+  <h3>do-while 문에서 0에서 n까지 합</h3>
+  <hr>
+  <script>
+    var n=prompt("0보다 큰 정수를 입력하세요",0);
+    n=parseInt(n);
+
+    var i =0, sum=0
+    do{
+      sum+=i;
+      i++;
+    }while(i<=0);
+    document.write("0에서 "+n+"까지 합은? "+sum);
+  </script>
+  
+</body>
+</html>
