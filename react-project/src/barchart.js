@@ -6,6 +6,7 @@ function Barchart() {
   const width = 400;
   const height = 300;
   const margin = { top: 20, left: 20, bottom: 20, right: 20 };
+  const moveXaxis = 200;
 
   const [Mydata, setMydata] = useState([]);
   const svgRef = useRef(null);
@@ -33,15 +34,10 @@ function Barchart() {
       CreditTable[i] = newCred;
     }
 
-    setMydata([...newCred]);
+    setMydata([...CreditTable]);
   };
 
   useEffect(() => {
-    const xData = (d, i) => i;
-    const yData = (d) => d;
-    const XData = d3.map(Mydata, xData);
-    const YData = d3.map(Mydata, yData);
-
     CredData();
 
     const svg = d3.select(svgRef.current);
@@ -58,10 +54,10 @@ function Barchart() {
       .range([height - margin.bottom, margin.top]);
 
     const xAxis = d3.axisBottom(x).ticks(Mydata.length);
-    svg.select(".x-axis").style("transform", "translateY(270px)").call(xAxis);
+    svg.select(".x-axis").style("transform", "translateY(280px)").call(xAxis);
 
     const yAxis = d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]);
-    svg.select(".y-axis").style("transform", "translateX(30px)").call(yAxis);
+    svg.select(".y-axis").style("transform", "translateX(25px)").call(yAxis);
 
     // apply axis to canvas
 
@@ -70,13 +66,15 @@ function Barchart() {
       .selectAll(".bar")
       .data(Mydata)
       .join("rect")
-      .attr("class", "bar-chart")
-      .enter()
-      .attr("x", (v) => x(v.name) + x.bandwidth() / 2 - 15)
-      .attr("y", (v) => y(v.value))
+      .attr("class", "bar")
+      .attr("x", (v, i) => x(i))
+      .attr("y", -150)
+      .style("transform", "scale(1,-1)")
+      .transition()
+      .duration(2000)
       .attr("width", 30)
       .attr("fill", "blue")
-      .attr("height", (Mydata) => y(0) - y(Mydata.value));
+      .attr("height", (v, i) => 300 - y(v));
 
     // add text
     svg
@@ -85,8 +83,8 @@ function Barchart() {
       .enter()
       .append("text")
       .text((d) => d.value + "%")
-      .attr("x", (v) => x(v.name))
-      .attr("y", 370) //(v) => y(v.value) - 5
+      .attr("x", (v) => x(v.name) + margin.right + 25)
+      .attr("y", (v) => y(v.value) - 5) //
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
       .attr("font-size", "12px")
