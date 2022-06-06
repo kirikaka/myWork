@@ -1,12 +1,12 @@
 import "./App.css";
 // import Bar from "./d3/4_Bar";
-import Barchart from "./barchart";
+import ShowAll from "./ShowAll";
 
 function App() {
   return (
-    <>
-      <Barchart />
-    </>
+    <div>
+      <ShowAll />
+    </div>
   );
 }
 

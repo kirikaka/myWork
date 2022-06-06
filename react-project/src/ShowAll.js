@@ -2,11 +2,72 @@ import * as d3 from "d3";
 import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
 
+
+function InputEx() {
+  const [Inputs, setInputs] = useState({
+    name: "",
+    major: "",
+    stuNum: "",
+    grade: "",
+    goal: ""
+  });
+
+  const { name, major, stuNum, grade, goal } = Inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...Inputs,
+      [name]: value
+    });
+  };
+
+  const onReset = () => {
+    setInputs({
+      name: "",
+      major: "",
+      stuNum: "",
+      grade: "",
+      goal: ""
+    });
+  };
+  return (
+    <div>
+      <input
+        name="stuNum"
+        placeholder="학번"
+        onChange={onChange}
+        value={stuNum}
+      />
+      <input
+        name="grade"
+        placeholder="학년"
+        onChange={onChange}
+        value={grade}
+      />
+      <input
+        name="goal"
+        placeholder="목표 평점"
+        onChange={onChange}
+        value={goal}
+      />
+      <br />
+      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        name="major"
+        placeholder="전공"
+        onChange={onChange}
+        value={major}
+      />
+      <button onClick={onReset}>초기화</button>
+    </div>
+  );
+}
+
 function Barchart() {
   const width = 400;
   const height = 300;
   const margin = { top: 20, left: 20, bottom: 20, right: 20 };
-  const moveXaxis = 200;
 
   const [Mydata, setMydata] = useState([]);
   const svgRef = useRef(null);
@@ -67,8 +128,8 @@ function Barchart() {
       .data(Mydata)
       .join("rect")
       .attr("class", "bar")
-      .attr("x", (v, i) => x(i))
-      .attr("y", -150)
+      .attr("x", (v) => x(v.name) + margin.right)
+      .attr("y", (v) => y(v.value))
       .style("transform", "scale(1,-1)")
       .transition()
       .duration(2000)
@@ -84,7 +145,7 @@ function Barchart() {
       .append("text")
       .text((d) => d.value + "%")
       .attr("x", (v) => x(v.name) + margin.right + 25)
-      .attr("y", (v) => y(v.value) - 5) //
+      .attr("y", (v) => y(v.value) - 10) //
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
       .attr("font-size", "12px")
@@ -92,13 +153,27 @@ function Barchart() {
   }, [Mydata]);
 
   return (
-    <p id="Bar">
+    <div id="Bar">
       <svg ref={svgRef} width={width} height={height}>
         <g className="x-axis"></g>
         <g className="y-axis"></g>
       </svg>
-    </p>
+    </div>
   );
 }
 
-export default Barchart;
+function ShowAll() {
+  return (
+    <>
+      <div>
+        <InputEx />
+      </div>
+      <div>
+        <Barchart />
+      </div>
+    </>
+  );
+}
+
+
+export default ShowAll;
