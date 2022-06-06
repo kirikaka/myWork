@@ -1,0 +1,2033 @@
+<div class="py-5 bg-light">
+  <div class="container">
+    <div id="appModule" class="card card-body mb-4 content">
+      <div><p class="contenttitle">수강 /성적조회</p></div>
+      <div class="tablelistbox">
+        <div id="hakbu">
+          <table class="tablegw">
+            <colgroup>
+              <col style="width: 5%" />
+              <col style="width: 25%" />
+              <col style="width: 15%" />
+              <col style="width: 15%" />
+              <col style="width: 17%" />
+              <col style="width: 23%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>학과/학부</th>
+                <th>학번</th>
+                <th>이름</th>
+                <th>학적상황</th>
+                <th>지도교수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>학부</td>
+                <td>정보융합학부 데이터사이언스전공</td>
+                <td>2018204051</td>
+                <td>안태현</td>
+                <td>3학년 재학</td>
+                <td>임동혁<br />dhim@kw.ac.kr</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <!---->
+          <!----><br />
+          <!----><br />
+          <table class="tablegw">
+            <colgroup>
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 5%" />
+              <col style="width: 10%" />
+              <col style="width: 10%" />
+              <col style="width: 20%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="4">1)신청학점</th>
+                <th colspan="4">2)삭제학점</th>
+                <th colspan="4">3)취득학점</th>
+                <th colspan="2">평량평균</th>
+                <th rowspan="2">6)연도/학과별<br />졸업이수학점</th>
+              </tr>
+              <tr>
+                <th>전공</th>
+                <th>교양</th>
+                <th>기타</th>
+                <th>계</th>
+                <th>전공</th>
+                <th>교양</th>
+                <th>기타</th>
+                <th>계</th>
+                <th>전공</th>
+                <th>교양</th>
+                <th>기타</th>
+                <th>계</th>
+                <th>4)학적부 기준</th>
+                <th>5)성적증명서 기준</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>28<br />(0)</td>
+                <td>48<br />()</td>
+                <td>6<br />(0)</td>
+                <td>82<br />(3)</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>3</td>
+                <td>28<br />(0)</td>
+                <td>42<br />(0)</td>
+                <td>6<br />(0)</td>
+                <td>76<br />(0)</td>
+                <td>3.1</td>
+                <td>3.28</td>
+                <th>
+                  <a
+                    href="/assets/custom/doc/sungjuk_info_2020.pdf"
+                    target="_blank"
+                    ><button type="button" class="btn2 btn-gray">
+                      조회
+                    </button></a
+                  >
+                </th>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%" align="left">
+            <tbody>
+              <tr height="20">
+                <td>
+                  <font color="#FF0000">※ () 안의 학점은 재수강 학점임</font>
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <font color="#FF0000"
+                    >※ 기타 : 교직, 복수전공, 부전공, 일반선택 학점 등</font
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <table
+            id="synthesis-score-table"
+            class="tablegw"
+            style="margin: 25px 0"
+          >
+            <colgroup>
+              <col width="25%" />
+              <col width="15%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th rowspan="2">학기</th>
+                <th rowspan="2">취득 학점</th>
+                <th colspan="2">전공 평점</th>
+                <th colspan="2">전공 외 평점</th>
+                <th colspan="2">평균 평점</th>
+              </tr>
+              <tr>
+                <th>F 포함</th>
+                <th>미포함</th>
+                <th>F 포함</th>
+                <th>미포함</th>
+                <th>F 포함</th>
+                <th>미포함</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="">
+                <td>2018학년도 1학기</td>
+                <td>17</td>
+                <td>-</td>
+                <td>-</td>
+                <td>2.70</td>
+                <td>2.70</td>
+                <td>2.70</td>
+                <td>2.70</td>
+              </tr>
+
+              <tr style="">
+                <td>2018학년도 2학기</td>
+                <td>13</td>
+                <td>-</td>
+                <td>-</td>
+                <td>3.25</td>
+                <td>3.25</td>
+                <td>3.25</td>
+                <td>3.25</td>
+              </tr>
+
+              <tr style="">
+                <td>2021학년도 1학기</td>
+                <td>18</td>
+                <td>3.75</td>
+                <td>3.75</td>
+                <td>3.50</td>
+                <td>3.50</td>
+                <td>3.66</td>
+                <td>3.66</td>
+              </tr>
+
+              <tr style="">
+                <td>2021학년도 2학기</td>
+                <td>19</td>
+                <td>3.30</td>
+                <td>3.30</td>
+                <td>4.00</td>
+                <td>4.00</td>
+                <td>3.41</td>
+                <td>3.41</td>
+              </tr>
+
+              <tr style="">
+                <td>2022학년도 1학기</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+
+              <tr style="font-weight: bold">
+                <td>전체 학기</td>
+                <td>76</td>
+                <td>3.50</td>
+                <td>3.50</td>
+                <td>3.12</td>
+                <td>3.12</td>
+                <td>3.28</td>
+                <td>3.28</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-bottom: 25px">
+            <div class="chartjs-size-monitor">
+              <div class="chartjs-size-monitor-expand">
+                <div class=""></div>
+              </div>
+              <div class="chartjs-size-monitor-shrink">
+                <div class=""></div>
+              </div>
+            </div>
+            <canvas
+              id="synthesis-score-chart"
+              height="236"
+              style="display: block; width: 888px; height: 236px"
+              width="888"
+              class="chartjs-render-monitor"
+            ></canvas>
+          </div>
+
+          <table width="100%" align="left" cellspacing="0">
+            <tbody>
+              <tr height="20">
+                <td>
+                  <b
+                    >1) 신청학점 :
+                    <font color="#FF0000"
+                      >성적처리가 마감된 과목의 학점에 한해서만 합산</font
+                    ><font color="#0000FF"
+                      >(F학점, 삭제학점, 재수강으로 인한 삭제학점
+                      <u>포함</u>)</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >2) 삭제학점 :
+                    <font color="#FF0000"
+                      >학점삭제제도로 인한 삭제학점 + 재수강으로 인한 삭제
+                      학점</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >3) 취득학점 :
+                    <font color="#FF0000"
+                      >성적처리가 마감된 과목의 학점에 한해서만 합산</font
+                    ><font color="#0000FF"
+                      >(F학점, 삭제학점, 재수강으로 인한 삭제학점
+                      <u>미포함</u>)</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >4) (학적부 기준) 평량평균 :
+                    <font color="#0000FF">신청학점</font></b
+                  >에 대한 평량평균
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >5) (성적증명서 기준) 평량평균 :
+                    <font color="#0000FF">취득학점</font></b
+                  >에 대한 평량평균
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  6) 연도/학과별 졸업이수학점 : 입학연도 및 각 학과별 졸업이수
+                  학점
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <table width="100%" align="left">
+            <tbody>
+              <tr height="20">
+                <td>
+                  <b
+                    ><font color="#FF0000"
+                      >※ 상기 산출자료는 단순 참고용이므로 정확한 이수 학점 및
+                      평량평균은 성적증명서 발급을 통하여 확인하시기 바랍니다
+                      ※</font
+                    ></b
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%" align="left">
+            <tbody>
+              <tr height="20">
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%" align="left">
+            <tbody>
+              <tr>
+                <td>
+                  <b
+                    ><font color="black" size="5px" style="font-weight: bold"
+                      >*성적내역</font
+                    ></b
+                  >&nbsp;<b
+                    ><b
+                      ><a href="javascript:void(0);">
+                        - <span>[2022 년도 1 학기 성적표 출력] </span></a
+                      ></b
+                    ></b
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b
+                    ><font color="#0000FF" style="font-weight: bold"
+                      >※ 당해학기 재수강 과목의 기 이수한 과목은 성적마감과
+                      동시에 삭제되며, 기존 이수과목의 성적은 '등급(재수강)'로
+                      표기됨</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <!---->
+              <tr height="20">
+                <td>
+                  <b
+                    ><font color="#FF0000"
+                      >※ 2022학년도 1학기 수강지도(전자승인)를 받지
+                      않았습니다.</font
+                    ></b
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2022학년도 1<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H040-3-9617-01</td>
+                <td>실험설계및분석</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-3-9324-01</td>
+                <td>데이터마이닝</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-3-9151-01</td>
+                <td>기계학습</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-3-4141-01</td>
+                <td>정보디자인프로그래밍</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-3-3115-01</td>
+                <td>IoT프로그래밍</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-2-3029-01</td>
+                <td>인터넷활용</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 계절학기(동계)<!----></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>교류</td>
+                <td>SW프로젝트개발실무기초</td>
+                <td>국내교류</td>
+                <td>일선</td>
+                <td>3</td>
+                <td>A+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 2<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H040-2-9632-01</td>
+                <td>통계학응용</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-9158-01</td>
+                <td>데이터사이언스개론</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>C+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-6387-01</td>
+                <td>모바일프로그래밍</td>
+                <td>정보융합학부</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-3663-01</td>
+                <td>데이터베이스</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-1243-02</td>
+                <td>자료구조</td>
+                <td>정보융합학부</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-1234-01</td>
+                <td>진로탐색및설계</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>1</td>
+                <td>P</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-1-8583-01</td>
+                <td>글로벌시대의쟁점과현안</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>A0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 계절학기(하계)<!----></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0000-1-4626-03</td>
+                <td>대학수학및연습2</td>
+                <td>전체공통</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>A0</td>
+                <td></td>
+                <td><font color="red">재수강</font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 1<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H040-2-9616-02</td>
+                <td>빅데이터언어</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-7777-02</td>
+                <td>객체지향프로그래밍</td>
+                <td>정보융합학부</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-3688-01</td>
+                <td>AI수학</td>
+                <td>정보융합학부</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-2-1655-02</td>
+                <td>컴퓨터네트워크</td>
+                <td>정보융합학부</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>A+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-3-2997-01</td>
+                <td>산업화와환경오염</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-1-2959-02</td>
+                <td>인간존재의이해</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>A0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2018학년도 계절학기(동계)<!----></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>교류</td>
+                <td>겨울 소프트웨어 챌린지</td>
+                <td>국내교류</td>
+                <td>일선</td>
+                <td>3</td>
+                <td>P</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2018학년도 2<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H040-1-8297-02</td>
+                <td>컴퓨팅사고</td>
+                <td>정보융합학부</td>
+                <td>교필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-1-5714-02</td>
+                <td>고급C프로그래밍및설계</td>
+                <td>정보융합학부</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>F</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-1-4626-02</td>
+                <td>대학수학및연습2</td>
+                <td>정보융합학부</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>C+(삭제)</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-1-4002-01</td>
+                <td>통계학개론</td>
+                <td>정보융합학부</td>
+                <td>기선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-2-6133-01</td>
+                <td>세계도시문명사</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-1-8128-01</td>
+                <td>광운인되기</td>
+                <td>전체공통</td>
+                <td>교필</td>
+                <td>1</td>
+                <td>P</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-1-2948-07</td>
+                <td>읽기와쓰기</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="11%" />
+              <col width="23%" />
+              <col width="15%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2018학년도 1<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>학정번호</th>
+                <th>과목명</th>
+                <th>개설학과</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>인증구분</th>
+                <th>재수강여부</th>
+                <th>재수강이후 <br />삭제여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H040-1-8610-02</td>
+                <td>프로그래밍기초</td>
+                <td>정보융합학부</td>
+                <td>교필</td>
+                <td>3</td>
+                <td>C+</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H040-1-4625-02</td>
+                <td>대학수학및연습1</td>
+                <td>정보융합학부</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>B0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>H000-1-1077-08</td>
+                <td>영어회화</td>
+                <td>소프트웨어융합대학공통</td>
+                <td>교필</td>
+                <td>3</td>
+                <td>B0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-2-3932-01</td>
+                <td>한국근현대사</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-1-7000-01</td>
+                <td>21세기기업의인재상</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>2</td>
+                <td>P</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <tr>
+                <td>0000-1-4081-01</td>
+                <td>애니메이션의이해</td>
+                <td>전체공통</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>C0</td>
+                <td></td>
+                <td><font color="red"></font></td>
+                <!---->
+                <td></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mtablelistbox">
+        <div id="hakbu">
+          <!---->
+          <!----><br />
+          <!---->
+          <table class="tablegw">
+            <colgroup>
+              <col style="width: 40%" />
+              <col style="width: 20%" />
+              <col style="width: 40%" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <th rowspan="4">1)신청학점</th>
+                <th>전공</th>
+                <td>28<br />(0)</td>
+              </tr>
+              <tr>
+                <th>교양</th>
+                <td>48<br />()</td>
+              </tr>
+              <tr>
+                <th>기타</th>
+                <td>6<br />(0)</td>
+              </tr>
+              <tr>
+                <th>계</th>
+                <td>82<br />(3)</td>
+              </tr>
+              <tr>
+                <th rowspan="4">2)삭제학점</th>
+                <th>전공</th>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th>교양</th>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th>기타</th>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th>계</th>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th rowspan="4">3)취득학점</th>
+                <th>전공</th>
+                <td>28<br />(0)</td>
+              </tr>
+              <tr>
+                <th>교양</th>
+                <td>42<br />(0)</td>
+              </tr>
+              <tr>
+                <th>기타</th>
+                <td>6<br />(0)</td>
+              </tr>
+              <tr>
+                <th>계</th>
+                <td>76<br />(0)</td>
+              </tr>
+              <tr>
+                <th rowspan="2">평량평균</th>
+                <th>4)학적부 기준</th>
+                <td>3.1</td>
+              </tr>
+              <tr>
+                <th>5)성적증명서 기준</th>
+                <td>3.28</td>
+              </tr>
+              <tr>
+                <th colspan="2">연도/학과별 졸업이수학점</th>
+                <td>
+                  <a href="/assets/custom/doc/sungjuk_info.pdf" target="_blank"
+                    ><button type="button" class="btn2 btn-gray">
+                      조회
+                    </button></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%" align="left">
+            <tbody>
+              <tr height="20">
+                <td>
+                  <font color="#FF0000">※ () 안의 학점은 재수강 학점임</font>
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <font color="#FF0000"
+                    >※ 기타 : 교직, 복수전공, 부전공, 일반선택 학점 등</font
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <table width="100%" align="left" cellspacing="0">
+            <tbody>
+              <tr height="20">
+                <td>
+                  <b
+                    >1) 신청학점 :
+                    <font color="#FF0000"
+                      >성적처리가 마감된 과목의 학점에 한해서만 합산</font
+                    ><font color="#0000FF"
+                      >(F학점, 삭제학점, 재수강으로 인한 삭제학점
+                      <u>포함</u>)</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >2) 삭제학점 :
+                    <font color="#FF0000"
+                      >학점삭제제도로 인한 삭제학점 + 재수강으로 인한 삭제
+                      학점</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >3) 취득학점 :
+                    <font color="#FF0000"
+                      >성적처리가 마감된 과목의 학점에 한해서만 합산</font
+                    ><font color="#0000FF"
+                      >(F학점, 삭제학점, 재수강으로 인한 삭제학점
+                      <u>미포함</u>)</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >4) (학적부 기준) 평량평균 :
+                    <font color="#0000FF">신청학점</font></b
+                  >에 대한 평량평균
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  <b
+                    >5) (성적증명서 기준) 평량평균 :
+                    <font color="#0000FF">취득학점</font></b
+                  >에 대한 평량평균
+                </td>
+              </tr>
+              <tr height="20">
+                <td>
+                  6) 연도/학과별 졸업이수학점 : 입학연도 및 각 학과별 졸업이수
+                  학점
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <table
+            id="synthesis-score-table"
+            class="tablegw"
+            style="margin: 25px 0"
+          >
+            <colgroup>
+              <col width="25%" />
+              <col width="15%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th rowspan="2">학기</th>
+                <th rowspan="2">취득 학점</th>
+                <th colspan="2">전공 평점</th>
+                <th colspan="2">전공 외 평점</th>
+                <th colspan="2">평균 평점</th>
+              </tr>
+              <tr>
+                <th>F 포함</th>
+                <th>미포함</th>
+                <th>F 포함</th>
+                <th>미포함</th>
+                <th>F 포함</th>
+                <th>미포함</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="">
+                <td>2018학년도 1학기</td>
+                <td>17</td>
+                <td>-</td>
+                <td>-</td>
+                <td>2.70</td>
+                <td>2.70</td>
+                <td>2.70</td>
+                <td>2.70</td>
+              </tr>
+
+              <tr style="">
+                <td>2018학년도 2학기</td>
+                <td>13</td>
+                <td>-</td>
+                <td>-</td>
+                <td>3.25</td>
+                <td>3.25</td>
+                <td>3.25</td>
+                <td>3.25</td>
+              </tr>
+
+              <tr style="">
+                <td>2021학년도 1학기</td>
+                <td>18</td>
+                <td>3.75</td>
+                <td>3.75</td>
+                <td>3.50</td>
+                <td>3.50</td>
+                <td>3.66</td>
+                <td>3.66</td>
+              </tr>
+
+              <tr style="">
+                <td>2021학년도 2학기</td>
+                <td>19</td>
+                <td>3.30</td>
+                <td>3.30</td>
+                <td>4.00</td>
+                <td>4.00</td>
+                <td>3.41</td>
+                <td>3.41</td>
+              </tr>
+
+              <tr style="">
+                <td>2022학년도 1학기</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+
+              <tr style="font-weight: bold">
+                <td>전체 학기</td>
+                <td>76</td>
+                <td>3.50</td>
+                <td>3.50</td>
+                <td>3.12</td>
+                <td>3.12</td>
+                <td>3.28</td>
+                <td>3.28</td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%" align="left" cellspacing="0">
+            <tbody>
+              <tr height="20">
+                <td>
+                  <b
+                    ><font color="#FF0000"
+                      >※ 상기 산출자료는 단순 참고용이므로 정확한 이수 학점 및
+                      평량평균은 성적증명서 발급을 통하여 확인하시기 바랍니다
+                      ※</font
+                    ></b
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%" align="left">
+            <tbody>
+              <tr height="20">
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%" align="left" border="0">
+            <tbody>
+              <tr>
+                <td>
+                  <b
+                    ><font color="black" size="5px" style="font-weight: bold"
+                      >*성적내역</font
+                    ></b
+                  >
+                  <a href="javascript:void(0);"
+                    ><b>- <span>[2022 년도 1 학기 성적표 출력] </span></b></a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b
+                    ><font color="#0000FF" style="font-weight: bold"
+                      >※ 당해학기 재수강 과목의 기 이수한 과목은 성적마감과
+                      동시에 삭제되며, 기존 이수과목의 성적은 '등급(재수강)'로
+                      표기됨</font
+                    ></b
+                  >
+                </td>
+              </tr>
+              <!---->
+              <tr height="20">
+                <td>
+                  <b
+                    ><font color="#FF0000"
+                      >※ 2022학년도 1학기 수강지도(전자승인)를 받지
+                      않았습니다.</font
+                    ></b
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2022학년도 1<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>실험설계및분석</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>데이터마이닝</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>기계학습</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>정보디자인프로그래밍</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>IoT프로그래밍</td>
+                <td>전선</td>
+                <td>3</td>
+                <td></td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>인터넷활용</td>
+                <td>교선</td>
+                <td>3</td>
+                <td></td>
+                <td><font color="red"></font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 계절학기(동계)<!----></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SW프로젝트개발실무기초</td>
+                <td>일선</td>
+                <td>3</td>
+                <td>A+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 2<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>통계학응용</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>데이터사이언스개론</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>C+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>모바일프로그래밍</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>데이터베이스</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>자료구조</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>진로탐색및설계</td>
+                <td>전선</td>
+                <td>1</td>
+                <td>P</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>글로벌시대의쟁점과현안</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>A0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 계절학기(하계)<!----></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>대학수학및연습2</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>A0</td>
+                <td><font color="red">재수강</font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2021학년도 1<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>빅데이터언어</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>객체지향프로그래밍</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>AI수학</td>
+                <td>전필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>컴퓨터네트워크</td>
+                <td>전선</td>
+                <td>3</td>
+                <td>A+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>산업화와환경오염</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>인간존재의이해</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>A0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2018학년도 계절학기(동계)<!----></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>겨울 소프트웨어 챌린지</td>
+                <td>일선</td>
+                <td>3</td>
+                <td>P</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2018학년도 2<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>컴퓨팅사고</td>
+                <td>교필</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>고급C프로그래밍및설계</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>F</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>대학수학및연습2</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>C+(삭제)</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>통계학개론</td>
+                <td>기선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>세계도시문명사</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>광운인되기</td>
+                <td>교필</td>
+                <td>1</td>
+                <td>P</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>읽기와쓰기</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+          <table class="AType">
+            <colgroup>
+              <col width="40%" />
+              <col width="20%" />
+              <col width="10%" />
+              <col width="20%" />
+              <col width="10%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="9">2018학년도 1<span>학기</span></th>
+              </tr>
+              <tr>
+                <th>과목명</th>
+                <th>이수구분</th>
+                <th>학점</th>
+                <th>성적</th>
+                <th>재수강여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>프로그래밍기초</td>
+                <td>교필</td>
+                <td>3</td>
+                <td>C+</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>대학수학및연습1</td>
+                <td>기필</td>
+                <td>3</td>
+                <td>B0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>영어회화</td>
+                <td>교필</td>
+                <td>3</td>
+                <td>B0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>한국근현대사</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>B0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>21세기기업의인재상</td>
+                <td>교선</td>
+                <td>2</td>
+                <td>P</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <tr>
+                <td>애니메이션의이해</td>
+                <td>교선</td>
+                <td>3</td>
+                <td>C0</td>
+                <td><font color="red"></font></td>
+              </tr>
+              <!---->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <form id="printForm" name="printForm" method="post">
+      <input id="reprtParam1" name="reprtParam1" type="hidden" value="" />
+    </form>
+    <script>
+      let appModule = new Vue({
+        el: "#appModule",
+        data: {
+          info: [],
+          programGubun: "",
+          sungjukTot: [],
+          sungjuk: [],
+          pyunHakjum: [],
+          retakeOpt: "",
+          thisYear: "",
+          hakgi: "",
+          sugangCounsel: "",
+          termCheck: "",
+          thisMonth: "",
+          sungjukYear: "",
+          sungjukHakgi: "",
+        },
+        mounted: function () {
+          let self = this;
+          self.thisYear = "2022";
+          self.thisMonth = "06";
+          if ("06" >= 1 && "06" <= 6) {
+            self.hakgi = "1";
+          } else if ("06" >= 7 && "06" <= 12) {
+            self.hakgi = "2";
+          }
+
+          axios
+            .post("/std/cps/inqire/AtnlcScreCheckTerm.do", self.$data) //성적 조회기간 체크
+            .then(
+              function (response) {
+                var nowMap = response.data.nowMap;
+                var termMap = response.data.termMap;
+                if (termMap != null) {
+                  if (
+                    nowMap.nowdate >= termMap.fromDate &&
+                    nowMap.nowdate <= termMap.toDate
+                  ) {
+                    if (
+                      nowMap.nowtime >= termMap.fromTime &&
+                      nowMap.nowtime <= termMap.toTime
+                    ) {
+                      self.termCheck = "i";
+                    }
+                  } else if (nowMap.nowdate < termMap.fromDate) {
+                    self.termCheck = "b";
+                  } else {
+                    self.termCheck = "a";
+                  }
+                }
+              }.bind(this)
+            );
+
+          if ("11" == "11") {
+            self.getInfo();
+            self.getProgramGubun();
+            self.getSungjukTot();
+            self.getSungjuk();
+            self.getSugangOpt();
+          } else {
+            $("#hakbu").hide();
+          }
+        },
+        methods: {
+          getInfo: function () {
+            axios
+              .post("/std/cps/inqire/AtnlcScreHakjukInfo.do") //개인 학적
+              .then(
+                function (response) {
+                  this.info = response.data;
+
+                  if (this.info.prevHakjumNum > 0) {
+                    this.getPyunIpHakjum(); //편입생은 편입학점가져오기
+                  }
+                }.bind(this)
+              );
+          },
+          getSugangOpt: function () {
+            axios
+              .post("/std/cps/inqire/AtnlcScreSugangOpt.do", this.$data) //수강 인증 data
+              .then(
+                function (response) {
+                  this.sugangCounsel = response.data;
+                }.bind(this)
+              );
+          },
+          getProgramGubun: function () {
+            axios
+              .post("/std/cps/inqire/AtnlcScreProgramGubun.do") //프로그램 구분
+              .then(
+                function (response) {
+                  this.programGubun = response.data;
+                }.bind(this)
+              );
+          },
+          getSungjukTot: function () {
+            axios
+              .post("/std/cps/inqire/AtnlcScreSungjukTot.do") //총 학점 data
+              .then(
+                function (response) {
+                  this.sungjukTot = response.data;
+                }.bind(this)
+              );
+          },
+          getSungjuk: function () {
+            let self = this;
+            axios
+              .post("/std/cps/inqire/AtnlcScreSungjukInfo.do") //학기별 성적(학부생)
+              .then(
+                function (response) {
+                  console.log(response.data);
+                  this.sungjukYear = response.data[0].thisYear;
+                  this.sungjukHakgi = response.data[0].hakgi;
+                  var sungjukInfo = response.data;
+                  this.sungjuk = sungjukInfo;
+                }.bind(this)
+              );
+          },
+          getPyunIpHakjum: function () {
+            axios
+              .post("/std/cps/inqire/AtnlcScrePyunIpInfo.do") //편입생 편입학점
+              .then(
+                function (response) {
+                  this.pyunHakjum = response.data;
+                }.bind(this)
+              );
+          },
+          MM_openBrWindow: function (theURL, winName, features) {
+            window.open(theURL, winName, features);
+          },
+          popPrivate: function () {
+            var nWidth = "600";
+            var nHeight = "500";
+            var curX = window.screenX || window.screenLeft || 0; // 현재창의 x좌표
+            var curY = window.screenY || window.screenTop || 0; // 현재창의 y좌표
+            var curWidth = document.body.clientWidth; // 현재창의 너비
+            var curHeight = document.body.clientHeight; // 현재창의 높이
+
+            var nLeft = curX + curWidth / 2 - nWidth / 2;
+            var nTop = curY + curHeight / 2 - nHeight / 2;
+
+            var strOption = "toolbar=no, menubar=no, location=no,resizable=yes";
+            strOption += ",left=200";
+            strOption += ",top=200";
+            strOption += ",width=" + nWidth;
+            strOption += ",height=" + nHeight;
+
+            window.open(
+              "/std/egn/chck/popwin/BeforeSbjectGradeViewStdPage.do",
+              "infoPop",
+              strOption
+            );
+          },
+          popPrintCheck: function () {
+            axios
+              .post("/std/cps/inqire/AtnlcPopTermCheck.do") //성적조회기간 체크
+              .then(
+                function (response) {
+                  if (response.data != null && response.data != "") {
+                    this.popPrint();
+                  } else {
+                    alert("성적표 출력 기간이 아닙니다.");
+                  }
+                }.bind(this)
+              );
+          },
+          popPrint: function () {
+            var nHeight = "900";
+            var nWidth = "800";
+            // 듀얼 모니터 고려한 윈도우 띄우기
+
+            var curX = window.screenX || window.screenLeft || 0; // 현재창의 x좌표
+            var curY = window.screenY || window.screenTop || 0; // 현재창의 y좌표
+            var curWidth = document.body.clientWidth; // 현재창의 너비
+            var curHeight = document.body.clientHeight; // 현재창의 높이
+
+            var nLeft = curX + curWidth / 2 - nWidth / 2;
+            var nTop = curY + curHeight / 2 - nHeight / 2;
+
+            var strOption = "toolbar=no, menubar=no, location=no,resizable=yes";
+
+            var popup = window.open("", "printPop", strOption);
+
+            strOption += ",left=200";
+            strOption += ",top=200";
+            strOption += ",width=" + nWidth;
+            strOption += ",height=" + nHeight;
+
+            $("#printForm")
+              .prop("target", "printPop")
+              .prop("action", "/std/cmn/reprt/SungjukPrint.do")
+              .submit()
+              .prop("target", "");
+            popup.focus();
+          },
+        },
+        filters: {
+          retakeOpt: function (value) {
+            var str = value;
+            var resultData = "";
+            if (value == "Y") {
+              resultData = "재수강";
+            }
+            return resultData;
+          },
+        },
+      });
+    </script>
+  </div>
+</div>
