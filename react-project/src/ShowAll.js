@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
+import lecture_dataset from "./data/lecture_dataset.csv";
 
 
 function InputEx() {
@@ -70,7 +71,7 @@ function Barchart() {
   const margin = { top: 20, left: 20, bottom: 20, right: 20 };
 
   const [Mydata, setMydata] = useState([]);
-  const svgRef = useRef(null);
+  const svgRef = useRef();
 
   const CredData = async () => {
     let credData = [];
@@ -106,7 +107,7 @@ function Barchart() {
     // setting axis
     const x = d3
       .scaleBand()
-      .domain(Mydata.map((d, i) => d.name))
+      .domain(Mydata.map((d) => d.name))
       .range([margin.left, width - margin.right]);
 
     const y = d3
@@ -128,7 +129,7 @@ function Barchart() {
       .data(Mydata)
       .join("rect")
       .attr("class", "bar")
-      .attr("x", (v) => x(v.name) + margin.right)
+      .attr("x", (v) => x(v.name) + x.bandwidth()/2-15)
       .attr("y", (v) => y(v.value))
       .style("transform", "scale(1,-1)")
       .transition()
@@ -160,6 +161,10 @@ function Barchart() {
       </svg>
     </div>
   );
+}
+
+function DataTable(){
+
 }
 
 function ShowAll() {
