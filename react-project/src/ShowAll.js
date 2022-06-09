@@ -1,6 +1,9 @@
 import * as d3 from "d3";
 import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
+import dataset_csv from "./data/dataset.csv";
+
+
 
 
 function InputEx() {
@@ -83,11 +86,20 @@ function Barchart() {
     });
     CredRes.push(parseInt((credData[0].Total / credData[1].Total) * 100));
     CredRes.push(parseInt((credData[0].Major / credData[1].Major) * 100));
-    CredRes.push(parseInt((credData[0].liberal / credData[1].liberal) * 100));
-    CredRes.push(parseInt((credData[0].Other / credData[1].Other) * 100));
+    CredRes.push(parseInt((credData[0].liberal+credData[0].Other / credData[1].liberal) * 100));
+    //Other에 해당했던 부분 해당되는것이 없어 삭제했습니다
+
+    for(let i=0;i<CredRes.length;i++){
+      if(CredRes[i]>100){
+        CredRes[i]=100;
+      }
+    }
+    //100%넘으면 초과되던 문제 해결
 
     let CreditTable = [];
     let credL = Object.keys(dataSet[0]);
+    credL.pop();
+
     for (let i = 0; i < CredRes.length; i++) {
       var newCred = {};
       newCred.name = credL[i];
@@ -127,7 +139,7 @@ function Barchart() {
       .data(Mydata)
       .join("rect")
       .attr("class", "bar")
-      .attr("x", (v,i) => i*90+50)
+      .attr("x", (v,i) => i*120+65)
       .attr("y", (v,i) =>height-margin.top-(v.value)*2.6 )
       .attr("fill-opacity",0.8)
       .attr("width", 30)
@@ -142,8 +154,8 @@ function Barchart() {
       .enter()
       .append("text")
       .text((d) => d.value + "%")
-      .attr("x", (v,i) => x(v.name) + margin.right + 25)
-      .attr("y", (v) => y(v.value) - 10) //
+      .attr("x", (v,i) => x(v.name) + margin.right + 40)
+      .attr("y", (v) => y(v.value) - 8) //
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
       .attr("font-size", "12px")
@@ -187,6 +199,16 @@ const recommendations = [
   point: 3, 
   rating: 3, 
   title: "강의명3"
+},
+{
+  point: 3, 
+  rating: 5, 
+  title: "강의명4"
+},
+{
+  point: 3, 
+  rating: 4, 
+  title: "강의명5"
 }
 ];
 
@@ -236,6 +258,55 @@ function Recommendation({recommendations})
         </div>
     );
 };
+
+function Lecture_detail(){
+  let detail_table=[]
+  await d3.csv(dataset_csv).then(function (data) {
+    data.forEach(function (d) {
+      credData.push(d);
+    });
+  });
+  return (
+    <div>
+        <table class = "lecDetailtab">
+          <thead>  
+            <tr>
+              <th colspan="2" class = "name">강의명</th>
+            </tr>
+            <tr>
+              <th colspan="2" class = "process">과정</th>
+            </tr>
+            <tr>
+              <th colspan="2" class = "credit">학점</th>
+            </tr>
+            <tr>
+              <th colspan="2" class = "contents">내용</th>
+            </tr>
+            <tr>
+              <th colspan="2" class = "Review">Review</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3" class = "name"></td>
+            </tr>
+            <tr>
+              <td colspan="3" class = "process"></td>
+            </tr>
+            <tr>
+              <td colspan="3" class = "credit"></td>
+            </tr>
+            <tr>
+              <td colspan="3" class = "contents"></td>
+            </tr>
+            <tr>
+              <td colspan="3" class = "Review"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+);
+}
 
 function ShowAll() {
   return (
