@@ -11,3 +11,71 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+table.recotab {
+  border-collapse: collapse;
+  border-radius: 5px;
+  border-style: hidden; /* hide standard table (collapsed) border */
+  box-shadow: 0 0 0 2px #707070; /* this draws the table border  */ 
+  table-layout: fixed;
+  width: 28.125%;  
+}
+
+table.recotab thead {
+  border-radius: 5px;
+  border: 3px solid #707070;
+  height: 52px;
+}
+
+table.recotab tr {
+  border-radius: 5px;
+  border: 1px solid #707070;
+  padding: 5px;
+  font-size: 20px;
+}
+
+table.recotab tr:hover {
+  background-color: #777777;
+  cursor: pointer;
+}
+
+table.recotab td, th {
+  text-align: center;
+  border: 1px solid #707070;
+}
+
+table.recotab th {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+table.recotab th.point
+{
+  width: 20%;
+}
+
+table.recotab th.star
+{
+  width: 30%;
+}
+
+table.recotab th.title
+{
+  width: 50%;
+}
+
+table.recotab table tr:last-child td:first-child 
+{
+  border-bottom-left-radius: 5px;
+}
+
+table.recotab table tr:last-child td:last-child 
+{
+  border-bottom-right-radius: 5px;
+}
+
+table.recotab table td:last-child
+{
+  text-align: left;
+  padding: 15px;
+}

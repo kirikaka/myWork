@@ -1,7 +1,6 @@
 import * as d3 from "d3";
 import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
-import lecture_dataset from "./data/lecture_dataset.csv";
 
 
 function InputEx() {
@@ -122,21 +121,19 @@ function Barchart() {
     svg.select(".y-axis").style("transform", "translateX(25px)").call(yAxis);
 
     // apply axis to canvas
-
     // vertical bar chart
     svg
       .selectAll(".bar")
       .data(Mydata)
       .join("rect")
       .attr("class", "bar")
-      .attr("x", (v) => x(v.name) + x.bandwidth()/2-15)
-      .attr("y", (v) => y(v.value))
-      .style("transform", "scale(1,-1)")
-      .transition()
-      .duration(2000)
+      .attr("x", (v,i) => i*90+50)
+      .attr("y", (v,i) =>height-margin.top-(v.value)*2.6 )
+      .attr("fill-opacity",0.8)
       .attr("width", 30)
       .attr("fill", "blue")
-      .attr("height", (v, i) => 300 - y(v));
+      .attr("height", (v,i)=>(v.value)*2.6);
+
 
     // add text
     svg
@@ -145,7 +142,7 @@ function Barchart() {
       .enter()
       .append("text")
       .text((d) => d.value + "%")
-      .attr("x", (v) => x(v.name) + margin.right + 25)
+      .attr("x", (v,i) => x(v.name) + margin.right + 25)
       .attr("y", (v) => y(v.value) - 10) //
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
@@ -163,9 +160,82 @@ function Barchart() {
   );
 }
 
+
+
+
 function DataTable(){
 
 }
+
+const recommendations = [
+  {
+  point: 3, 
+  rating: 5, 
+  title: "강의명0"
+},
+{
+  point: 3, 
+  rating: 4, 
+  title: "강의명1"
+},
+{
+  point: 3, 
+  rating: 4, 
+  title: "강의명2"
+},
+{
+  point: 3, 
+  rating: 3, 
+  title: "강의명3"
+}
+];
+
+function Recomend({recommendation})
+{
+    let stars = '';
+    let count = recommendation.rating;
+    for (let i = 5; i > 0; i--)
+    {
+        if(count !== 0)
+        {
+            stars += '★';
+            count -= 1;
+        }
+        else
+        {
+            stars += '☆';
+        }
+    };
+    
+    return (
+        <tr>
+            <td>{recommendation.point}</td>
+            <td>{stars}</td>
+            <td>{recommendation.title}</td>
+        </tr>
+    )
+}
+
+function Recommendation({recommendations})
+{
+    return (
+        <div>
+            <table class = "recotab">
+                <thead>
+                    <th class = "point">학점</th>
+                    <th class = "star">평점</th>
+                    <th class = "title">강의명</th>
+                </thead>
+                <tbody>
+                    {recommendations.map((recommendation) => 
+                        (
+                            <Recomend recommendation={recommendation}/>
+                        ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
 
 function ShowAll() {
   return (
@@ -175,6 +245,9 @@ function ShowAll() {
       </div>
       <div>
         <Barchart />
+      </div>
+      <div>
+        <Recommendation recommendations={recommendations} />
       </div>
     </>
   );
