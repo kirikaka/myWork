@@ -12,70 +12,62 @@ code {
     monospace;
 }
 
-table.recotab {
+table {
   border-collapse: collapse;
   border-radius: 5px;
   border-style: hidden; /* hide standard table (collapsed) border */
   box-shadow: 0 0 0 2px #707070; /* this draws the table border  */ 
-  table-layout: fixed;
-  width: 28.125%;  
+  width: 540px;
+  height: 260px;
 }
 
-table.recotab thead {
+thead {
   border-radius: 5px;
   border: 3px solid #707070;
   height: 52px;
 }
 
-table.recotab tr {
+tr {
   border-radius: 5px;
   border: 1px solid #707070;
   padding: 5px;
   font-size: 20px;
 }
 
-table.recotab tr:hover {
-  background-color: #777777;
+tr:hover {
+  background-color: #707070;
   cursor: pointer;
 }
 
-table.recotab td, th {
+td, th {
   text-align: center;
   border: 1px solid #707070;
 }
 
-table.recotab th {
+th {
   font-size: 22px;
   font-weight: bold;
 }
 
-table.recotab th.point
-{
-  width: 20%;
-}
 
-table.recotab th.star
-{
-  width: 30%;
-}
-
-table.recotab th.title
-{
-  width: 50%;
-}
-
-table.recotab table tr:last-child td:first-child 
+table tr:last-child td:first-child 
 {
   border-bottom-left-radius: 5px;
 }
 
-table.recotab table tr:last-child td:last-child 
+table tr:last-child td:last-child 
 {
   border-bottom-right-radius: 5px;
 }
 
-table.recotab table td:last-child
+table td:last-child
 {
   text-align: left;
   padding: 15px;
+}
+
+.center 
+{
+  margin-left: auto;
+  margin-right: auto;
 }
