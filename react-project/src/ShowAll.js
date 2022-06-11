@@ -1,10 +1,7 @@
 import * as d3 from "d3";
 import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
-import dataset_csv from "./data/dataset.csv";
-
-
-
+import lecture_detail_csv from "./data/lecture_data_low.csv";
 
 function InputEx() {
   const [Inputs, setInputs] = useState({
@@ -12,7 +9,7 @@ function InputEx() {
     major: "",
     stuNum: "",
     grade: "",
-    goal: ""
+    goal: "",
   });
 
   const { name, major, stuNum, grade, goal } = Inputs;
@@ -21,7 +18,7 @@ function InputEx() {
     const { name, value } = e.target;
     setInputs({
       ...Inputs,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -31,7 +28,7 @@ function InputEx() {
       major: "",
       stuNum: "",
       grade: "",
-      goal: ""
+      goal: "",
     });
   };
   return (
@@ -84,14 +81,19 @@ function Barchart() {
         credData.push(d);
       });
     });
+
     CredRes.push(parseInt((credData[0].Total / credData[1].Total) * 100));
     CredRes.push(parseInt((credData[0].Major / credData[1].Major) * 100));
-    CredRes.push(parseInt((credData[0].liberal+credData[0].Other / credData[1].liberal) * 100));
+    CredRes.push(
+      parseInt(
+        (credData[0].liberal + credData[0].Other / credData[1].liberal) * 100
+      )
+    );
     //Other에 해당했던 부분 해당되는것이 없어 삭제했습니다
 
-    for(let i=0;i<CredRes.length;i++){
-      if(CredRes[i]>100){
-        CredRes[i]=100;
+    for (let i = 0; i < CredRes.length; i++) {
+      if (CredRes[i] > 100) {
+        CredRes[i] = 100;
       }
     }
     //100%넘으면 초과되던 문제 해결
@@ -139,13 +141,12 @@ function Barchart() {
       .data(Mydata)
       .join("rect")
       .attr("class", "bar")
-      .attr("x", (v,i) => i*120+65)
-      .attr("y", (v,i) =>height-margin.top-(v.value)*2.6 )
-      .attr("fill-opacity",0.8)
+      .attr("x", (v, i) => i * 120 + 65)
+      .attr("y", (v, i) => height - margin.top - v.value * 2.6)
+      .attr("fill-opacity", 0.8)
       .attr("width", 30)
       .attr("fill", "blue")
-      .attr("height", (v,i)=>(v.value)*2.6);
-
+      .attr("height", (v, i) => v.value * 2.6);
 
     // add text
     svg
@@ -154,7 +155,7 @@ function Barchart() {
       .enter()
       .append("text")
       .text((d) => d.value + "%")
-      .attr("x", (v,i) => x(v.name) + margin.right + 40)
+      .attr("x", (v, i) => x(v.name) + margin.right + 40)
       .attr("y", (v) => y(v.value) - 8) //
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
@@ -172,140 +173,134 @@ function Barchart() {
   );
 }
 
-
-
-
-function DataTable(){
-
-}
-
 const recommendations = [
   {
-  point: 3, 
-  rating: 5, 
-  title: "강의명0"
-},
-{
-  point: 3, 
-  rating: 4, 
-  title: "강의명1"
-},
-{
-  point: 3, 
-  rating: 4, 
-  title: "강의명2"
-},
-{
-  point: 3, 
-  rating: 3, 
-  title: "강의명3"
-},
-{
-  point: 3, 
-  rating: 5, 
-  title: "강의명4"
-},
-{
-  point: 3, 
-  rating: 4, 
-  title: "강의명5"
-}
+    point: 3,
+    rating: 5,
+    title: "강의명0",
+  },
+  {
+    point: 3,
+    rating: 4,
+    title: "강의명1",
+  },
+  {
+    point: 3,
+    rating: 4,
+    title: "강의명2",
+  },
+  {
+    point: 3,
+    rating: 3,
+    title: "강의명3",
+  },
+  {
+    point: 3,
+    rating: 5,
+    title: "강의명4",
+  },
+  {
+    point: 3,
+    rating: 4,
+    title: "강의명5",
+  },
 ];
 
-function Recomend({recommendation})
-{
-    let stars = '';
-    let count = recommendation.rating;
-    for (let i = 5; i > 0; i--)
-    {
-        if(count !== 0)
-        {
-            stars += '★';
-            count -= 1;
-        }
-        else
-        {
-            stars += '☆';
-        }
-    };
-    
-    return (
-        <tr>
-            <td>{recommendation.point}</td>
-            <td>{stars}</td>
-            <td>{recommendation.title}</td>
-        </tr>
-    )
+function Recomend({ recommendation }) {
+  let stars = "";
+  let count = recommendation.rating;
+  for (let i = 5; i > 0; i--) {
+    if (count !== 0) {
+      stars += "★";
+      count -= 1;
+    } else {
+      stars += "☆";
+    }
+  }
+
+  return (
+    <tr>
+      <td>{recommendation.point}</td>
+      <td>{stars}</td>
+      <td>{recommendation.title}</td>
+    </tr>
+  );
 }
 
-function Recommendation({recommendations})
-{
-    return (
-        <div>
-            <table class = "recotab">
-                <thead>
-                    <th class = "point">학점</th>
-                    <th class = "star">평점</th>
-                    <th class = "title">강의명</th>
-                </thead>
-                <tbody>
-                    {recommendations.map((recommendation) => 
-                        (
-                            <Recomend recommendation={recommendation}/>
-                        ))}
-                </tbody>
-            </table>
-        </div>
-    );
-};
-
-function Lecture_detail(){
-  let detail_table=[]
-  await d3.csv(dataset_csv).then(function (data) {
-    data.forEach(function (d) {
-      credData.push(d);
-    });
-  });
+function Recommendation({ recommendations }) {
   return (
     <div>
-        <table class = "lecDetailtab">
-          <thead>  
-            <tr>
-              <th colspan="2" class = "name">강의명</th>
-            </tr>
-            <tr>
-              <th colspan="2" class = "process">과정</th>
-            </tr>
-            <tr>
-              <th colspan="2" class = "credit">학점</th>
-            </tr>
-            <tr>
-              <th colspan="2" class = "contents">내용</th>
-            </tr>
-            <tr>
-              <th colspan="2" class = "Review">Review</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="3" class = "name"></td>
-            </tr>
-            <tr>
-              <td colspan="3" class = "process"></td>
-            </tr>
-            <tr>
-              <td colspan="3" class = "credit"></td>
-            </tr>
-            <tr>
-              <td colspan="3" class = "contents"></td>
-            </tr>
-            <tr>
-              <td colspan="3" class = "Review"></td>
-            </tr>
-          </tbody>
-        </table>
+      <table className="recotab">
+        <thead>
+          <th className="point">학점</th>
+          <th className="star">평점</th>
+          <th className="title">강의명</th>
+        </thead>
+        <tbody>
+          {recommendations.map((recommendation) => (
+            <Recomend recommendation={recommendation} />
+          ))}
+        </tbody>
+      </table>
     </div>
-);
+  );
+}
+
+function Lecture_detail() {
+  const Take_detail = () => {
+    let detail_table = [];
+    let lectureData = d3.csv(lecture_detail_csv);
+    d3.csv(lecture_detail_csv).then(function (data) {
+      data.forEach(function (d) {
+        detail_table.push(d);
+      });
+    });
+    console.log(detail_table[0]);
+    return detail_table;
+  };
+  let result = Take_detail();
+  console.log(result[0]);
+
+  return (
+    <>
+      <div>
+        <table className="lecDetailtab">
+          <tr>
+            <th colSpan="2" className="name">
+              강의명
+            </th>
+            <td colSpan="3" className="name">
+              weNeed
+            </td>
+          </tr>
+          <tr>
+            <th colSpan="2" className="process">
+              과정
+            </th>
+            <td colSpan="3" className="process"></td>
+          </tr>
+          <tr>
+            <th colSpan="2" className="credit">
+              학점
+            </th>
+            <td colSpan="3" className="contents"></td>
+          </tr>
+          <tr>
+            <th colSpan="2" className="contents">
+              내용
+            </th>
+            <td colSpan="3" className="credit"></td>
+          </tr>
+          <tr>
+            <th colSpan="2" className="Review">
+              Review
+            </th>
+            <td colSpan="3" className="Review"></td>
+          </tr>
+        </table>
+      </div>
+    </>
+  );
 }
 
 function ShowAll() {
@@ -320,9 +315,11 @@ function ShowAll() {
       <div>
         <Recommendation recommendations={recommendations} />
       </div>
+      <div>
+        <Lecture_detail />
+      </div>
     </>
   );
 }
-
 
 export default ShowAll;
