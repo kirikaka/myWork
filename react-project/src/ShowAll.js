@@ -259,7 +259,8 @@ function Lecture_detail() {
     return detail_table;
   };
   let result = Take_detail();
-  console.log(result[0]);
+  let need = result[0];
+  console.log(result["name"]);
 
   return (
     <>
