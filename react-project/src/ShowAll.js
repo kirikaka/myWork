@@ -4,6 +4,8 @@ import dataset_csv from "./data/dataset.csv";
 import lecture_detail_low_csv from "./data/lecture_data_low.csv";
 import lecture_detail_high_csv from "./data/lecture_data_high.csv";
 
+let start = 0;
+
 function InputEx() {
   const [Inputs, setInputs] = useState({
     name: "",
@@ -32,8 +34,13 @@ function InputEx() {
       goal: "",
     });
   };
+
+  const onInsert = (e) => {
+    start = 1;
+  };
+
   return (
-    <div>
+    <div id="input">
       <input
         name="stuNum"
         placeholder="학번"
@@ -61,6 +68,7 @@ function InputEx() {
         value={major}
       />
       <button onClick={onReset}>초기화</button>
+      <button onClick={onInsert}>입력</button>
     </div>
   );
 }
@@ -263,8 +271,6 @@ function ShowLecture() {
     val.push(need.credit);
     val.push(need.contents);
     val.push(need.review);
-
-    console.log(val);
 
     d3.select("#lecDetailtab")
       .selectAll("td")
