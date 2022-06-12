@@ -1,7 +1,8 @@
 import * as d3 from "d3";
 import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
-import lecture_detail_csv from "./data/lecture_data_low.csv";
+import lecture_detail_low_csv from "./data/lecture_data_low.csv";
+import lecture_detail_high_csv from "./data/lecture_data_high.csv";
 
 function InputEx() {
   const [Inputs, setInputs] = useState({
@@ -246,58 +247,73 @@ function Recommendation({ recommendations }) {
   );
 }
 
-function Lecture_detail() {
-  const Take_detail = () => {
-    let detail_table = [];
-    let lectureData = d3.csv(lecture_detail_csv);
-    d3.csv(lecture_detail_csv).then(function (data) {
-      data.forEach(function (d) {
-        detail_table.push(d);
-      });
-    });
-    console.log(detail_table[0]);
-    return detail_table;
+function ShowLecture() {
+  const readCsv = async () => {
+    let file;
+    let gra = 2;
+    if (gra <= 2) {
+      file = await d3.csv(lecture_detail_low_csv);
+    } else {
+      file = await d3.csv(lecture_detail_high_csv);
+    }
+    let need = file[0];
+    let val = [];
+    val.push(need.name);
+    val.push(need.process);
+    val.push(need.credit);
+    val.push(need.contents);
+    val.push(need.review);
+
+    console.log(val);
+
+    d3.select("#lecDetailtab")
+      .selectAll("td")
+      .data(val)
+      .html((d, i) => d);
   };
-  let result = Take_detail();
-  let need = result[0];
-  console.log(result["name"]);
+
+  useEffect(() => {
+    readCsv();
+  }, []);
 
   return (
     <>
       <div>
         <table className="lecDetailtab">
-          <tr>
-            <th colSpan="2" className="name">
-              강의명
-            </th>
-            <td colSpan="3" className="name">
-              weNeed
-            </td>
-          </tr>
-          <tr>
-            <th colSpan="2" className="process">
-              과정
-            </th>
-            <td colSpan="3" className="process"></td>
-          </tr>
-          <tr>
-            <th colSpan="2" className="credit">
-              학점
-            </th>
-            <td colSpan="3" className="contents"></td>
-          </tr>
-          <tr>
-            <th colSpan="2" className="contents">
-              내용
-            </th>
-            <td colSpan="3" className="credit"></td>
-          </tr>
-          <tr>
-            <th colSpan="2" className="Review">
-              Review
-            </th>
-            <td colSpan="3" className="Review"></td>
-          </tr>
+          <tbody id="lecDetailtab">
+            <tr>
+              <th colSpan="2" className="name">
+                강의명
+              </th>
+              <td colSpan="3" className="name">
+                weNeed
+              </td>
+            </tr>
+            <tr>
+              <th colSpan="2" className="process">
+                과정
+              </th>
+              <td colSpan="3" className="process"></td>
+            </tr>
+            <tr>
+              <th colSpan="2" className="credit">
+                학점
+              </th>
+              <td colSpan="3" className="contents"></td>
+            </tr>
+            <tr>
+              <th colSpan="2" className="contents">
+                내용
+              </th>
+              <td colSpan="3" className="credit"></td>
+            </tr>
+            <tr>
+              <th colSpan="2" className="Review">
+                Review
+              </th>
+              <td colSpan="3" className="Review"></td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </>
@@ -317,7 +333,7 @@ function ShowAll() {
         <Recommendation recommendations={recommendations} />
       </div>
       <div>
-        <Lecture_detail />
+        <ShowLecture />
       </div>
     </>
   );
