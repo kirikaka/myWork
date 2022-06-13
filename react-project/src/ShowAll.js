@@ -40,28 +40,32 @@ function InputEx() {
   };
 
   return (
-    <div id="input">
+    <form id="input">
       <input
+        id="stuNum"
         name="stuNum"
         placeholder="학번"
         onChange={onChange}
         value={stuNum}
       />
       <input
+        id="grade"
         name="grade"
         placeholder="학년"
         onChange={onChange}
         value={grade}
       />
       <input
+        id="goal"
         name="goal"
         placeholder="목표 평점"
         onChange={onChange}
         value={goal}
       />
       <br />
-      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input id="name" name="name" placeholder="이름" onChange={onChange} value={name} />
       <input
+        id="major"
         name="major"
         placeholder="전공"
         onChange={onChange}
@@ -69,7 +73,7 @@ function InputEx() {
       />
       <button onClick={onReset}>초기화</button>
       <button onClick={onInsert}>입력</button>
-    </div>
+    </form>
   );
 }
 
@@ -95,9 +99,10 @@ function Barchart() {
     CredRes.push(parseInt((credData[0].Major / credData[1].Major) * 100));
     CredRes.push(
       parseInt(
-        (credData[0].liberal + credData[0].Other / credData[1].liberal) * 100
+        ((parseInt(credData[0].liberal) + parseInt(credData[0].Other) )/ credData[1].liberal) * 100
       )
     );
+    console.log((credData[0].liberal + credData[0].Other ))
     //Other에 해당했던 부분 해당되는것이 없어 삭제했습니다
 
     for (let i = 0; i < CredRes.length; i++) {
@@ -267,6 +272,7 @@ function ShowLecture() {
     let need = file[0];
     let val = [];
     val.push(need.name);
+    val.push(need.professor);
     val.push(need.process);
     val.push(need.credit);
     val.push(need.contents);
@@ -285,15 +291,19 @@ function ShowLecture() {
   return (
     <>
       <div>
-        <table className="lecDetailtab">
-          <tbody id="lecDetailtab">
+        <table id="lecDetailtab">
+          <tbody >
             <tr>
               <th colSpan="2" className="name">
                 강의명
               </th>
-              <td colSpan="3" className="name">
-                weNeed
-              </td>
+              <td colSpan="3" className="name"></td>
+            </tr>
+            <tr>
+              <th colSpan="2" className="professor">
+                교수
+              </th>
+              <td colSpan="3" className="name"></td>
             </tr>
             <tr>
               <th colSpan="2" className="process">
@@ -328,20 +338,20 @@ function ShowLecture() {
 
 function ShowAll() {
   return (
-    <>
-      <div>
+    <div id="Allcover">
+      <div id="leftTop">
         <InputEx />
       </div>
-      <div>
+      <div id="leftCenter">
         <Barchart />
       </div>
-      <div>
+      <div id="leftBelow">
         <Recommendation recommendations={recommendations} />
       </div>
-      <div>
+      <div id="rightBelow">
         <ShowLecture />
       </div>
-    </>
+    </div>
   );
 }
 

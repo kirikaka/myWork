@@ -12,13 +12,22 @@ code {
     monospace;
 }
 
+#input input{
+  size: 15px;
+  margin-right: 0.5%;
+}
+
+#goal{
+  width: 60px;
+}
+
 table.recotab {
   border-collapse: collapse;
   border-radius: 5px;
   border-style: hidden; /* hide standard table (collapsed) border */
   box-shadow: 0 0 0 2px #707070; /* this draws the table border  */ 
   table-layout: fixed;
-  width: 28.125%;  
+  width: 500px;  
 }
 
 table.recotab thead {
@@ -31,7 +40,7 @@ table.recotab tr {
   border-radius: 5px;
   border: 1px solid #707070;
   padding: 5px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 table.recotab tr:hover {
@@ -45,23 +54,23 @@ table.recotab td, th {
 }
 
 table.recotab th {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 table.recotab th.point
 {
-  width: 20%;
+  width: 30%;
 }
 
 table.recotab th.star
 {
-  width: 30%;
+  width: 40%;
 }
 
 table.recotab th.title
 {
-  width: 50%;
+  width: 60%;
 }
 
 table.recotab table tr:last-child td:first-child 
@@ -79,4 +88,60 @@ table.recotab table td:last-child
   text-align: left;
   padding: 15px;
 }
+
+#Allcover{
+  position: absolute;
+}
+
+#leftTop{
+  position : absolute;
+  left: 30px;
+  top: 30px;
+  width: 700px;
+  border-radius: 40px 40px 40px 40px;
+  
+}
+
+#leftCenter{
+  position : absolute;
+  left: 60px;
+  top: 100px;
+  width: 700px;
+  border-radius: 40px 40px 40px 40px;
+  
+  
+}
+
+#leftBelow{
+  position : absolute;
+  left: 20px;
+  top: 430px;
+  width: 700px;
+  border-radius: 40px 40px 40px 40px;
+  
+}
+#rightBelow{
+  position : absolute;
+  left: 540px;
+  top: 430px;
+  width: 800px;
+
+}
+#rightBelow table{
+  border: 1px solid black;
+}
+#rightBelow th{
+  font-size: 17px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100px;
+
+}
+#rightBelow td{
+  font-size: 14px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 400px;
+}
+
 
