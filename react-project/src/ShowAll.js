@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
 import lecture_detail_low_csv from "./data/lecture_data_low.csv";
 import lecture_detail_high_csv from "./data/lecture_data_high.csv";
+import d3_freshman from "./data/d3_freshman.csv";
 import grade_low_csv from "./data/low.csv";
 import grade_high_csv from "./data/high.csv";
 
@@ -88,10 +89,115 @@ function InputEx() {
     </form>
   );
 }
+function colorPicker(v) {
+  if (v <= 4) {
+    return "#1E90FF";
+  } else if (v > 4) {
+    return "#ADD8E6";
+  }
+}
+
+function BarLinear() {
+  const width = 1100;
+  const height = 600;
+  const margin = { top: 20, left: 20, bottom: 20, right: 20 };
+  // const [data, setData] = useState([]);
+
+  // const getData = async () => {
+  //   let grade_data = await d3.csv(d3_freshman);
+  //   let did = [];
+  //   did.push(grade_data.credit);
+  //   did.push(grade_data.GPA);
+  //   console.log(did);
+  //   setData([...did]);
+  // };
+
+  const [data, setData] = useState([
+    [15, 18, 15, 18, 18, 21, 12, 12],
+    [2.7, 3.3, 3.8, 3.8, 4, 4.3, 4, 4.5],
+  ]);
+  const svgRef = useRef();
+
+  useEffect(() => {
+    const svg = d3.select(svgRef.current);
+
+    const xScale1 = d3
+      .scaleBand()
+      .domain(data[0].map((v, i) => i))
+      .range([20, 1100])
+      .padding(0.4);
+    const yScale1 = d3.scaleLinear().domain([0, 25]).range([450, 30]);
+
+    const xAxis1 = d3.axisBottom(xScale1).ticks(data[0].length);
+    svg.select(".x-axis1").style("transform", "translateY(450px)").call(xAxis1);
+    const yAxis1 = d3.axisRight(yScale1);
+    var color = d3.scaleOrdinal().range(["#0000FF", "#4169"]);
+
+    svg
+      .select(".y-axis1")
+      .style("transform", "translateX(1070px)")
+      .call(yAxis1);
+
+    svg
+      .selectAll(".bar")
+      .data(data[0])
+      .join("rect")
+      .attr("class", "bar")
+      .attr("fill", function (d, i) {
+        return colorPicker(i);
+      })
+      .attr("x", (v, i) => xScale1(i) + 13)
+      .attr("y", yScale1)
+      .attr("width", "60px")
+      .attr("height", (v, i) => 450 - yScale1(v));
+
+    const xScale2 = d3
+      .scaleLinear()
+      .domain([0, data[1].length - 1])
+      .range([30, 1030]);
+    const yScale2 = d3.scaleLinear().domain([0, 4.5]).range([450, 30]);
+
+    const yAxis2 = d3.axisLeft(yScale2);
+    svg.select(".y-axis2").style("transform", "translateX(44px)").call(yAxis2);
+
+    const myLine = d3
+      .line()
+      .x((v, i) => xScale2(i) + 20)
+      .y((v) => yScale2(v) + 15);
+
+    svg
+      .selectAll(".path")
+      .data([data[1]])
+      .join((enter) => enter.append("path"))
+      .attr("d", (v) => myLine(v))
+      .attr("fill", "none")
+      .attr("stroke", "red");
+
+    svg
+      .append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "end")
+      .attr("y", height - 6)
+      .attr("dy", ".100em")
+      .attr("transform", "rotate(-90)")
+      .text("이수 학점");
+  }, [data]);
+
+  return (
+    <>
+      <svg ref={svgRef} width={width} height={height}>
+        <g className="x-axis1"></g>
+        <g className="y-axis1"></g>
+        <g className="x-axis2"></g>
+        <g className="y-axis2"></g>
+      </svg>
+    </>
+  );
+}
 
 function Barchart() {
-  const width = 400;
-  const height = 300;
+  const width = 600;
+  const height = 400;
   const margin = { top: 20, left: 20, bottom: 20, right: 20 };
 
   const [Mydata, setMydata] = useState([]);
@@ -156,11 +262,12 @@ function Barchart() {
       .range([height - margin.bottom, margin.top]);
 
     const xAxis = d3.axisBottom(x).ticks(Mydata.length);
-    svg.select(".x-axis").style("transform", "translateY(280px)").call(xAxis);
+    svg.select(".x-axis").style("transform", "translateY(380px)").call(xAxis);
 
     const yAxis = d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]);
     svg.select(".y-axis").style("transform", "translateX(25px)").call(yAxis);
 
+    var color = d3.scaleOrdinal().range(["#6667ab", "#ad7558", "#6bab55"]);
     // apply axis to canvas
     // vertical bar chart
     svg
@@ -168,12 +275,12 @@ function Barchart() {
       .data(Mydata)
       .join("rect")
       .attr("className", "bar")
-      .attr("x", (v, i) => i * 120 + 65)
-      .attr("y", (v, i) => height - margin.top - v.value * 2.6)
+      .attr("x", (v, i) => i * 185 + 90)
+      .attr("y", (v, i) => height - margin.top - v.value * 3.6)
       .attr("fill-opacity", 0.8)
-      .attr("width", 30)
-      .attr("fill", "blue")
-      .attr("height", (v, i) => v.value * 2.6);
+      .attr("width", 50)
+      .attr("fill", color)
+      .attr("height", (v, i) => v.value * 3.6);
 
     // add text
     svg
@@ -182,7 +289,7 @@ function Barchart() {
       .enter()
       .append("text")
       .text((d) => d.value + "%")
-      .attr("x", (v, i) => x(v.name) + margin.right + 40)
+      .attr("x", (v, i) => x(v.name) + margin.right + 75)
       .attr("y", (v) => y(v.value) - 8) //
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
@@ -385,20 +492,23 @@ function MakeTable() {
 
 function ShowAll() {
   return (
-    <div id="Allcover">
-      <div id="leftTop">
+    <div className="container">
+      <div id="profile">
         <InputEx />
       </div>
-      <div id="leftCenter">
+      <div id="rigpointshtTop">
+        <BarLinear />
+      </div>
+      <div id="progress">
         <Barchart />
       </div>
-      <div id="leftBelow">
+      <div id="recommend">
         <Recommendation recommendations={recommendations} />
       </div>
-      <div id="centerBelow">
+      <div id="lecture">
         <ShowLecture />
       </div>
-      <div id="rightBelow">
+      <div id="semester">
         <MakeTable />
       </div>
     </div>
