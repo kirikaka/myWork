@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+
 #input input{
   size: 15px;
   margin-right: 0.5%;
@@ -20,6 +21,7 @@ code {
 #goal{
   width: 60px;
 }
+
 
 table.recotab {
   border-collapse: collapse;
@@ -103,6 +105,7 @@ table.recotab table td:last-child
 }
 
 #leftCenter{
+  visibility : hidden;
   position : absolute;
   left: 60px;
   top: 100px;
@@ -116,6 +119,7 @@ table.recotab table td:last-child
 }
 
 #leftBelow{
+  visibility : hidden;
   position : absolute;
   left: 20px;
   top: 430px;
@@ -124,6 +128,7 @@ table.recotab table td:last-child
   
 }
 #centerBelow{
+  visibility : hidden;
   position : absolute;
   left: 540px;
   top: 430px;
@@ -148,6 +153,7 @@ table.recotab table td:last-child
 
 }
 #rightBelow{
+  visibility : hidden;
   position : absolute;
   left: 1060px;
   top: 430px;

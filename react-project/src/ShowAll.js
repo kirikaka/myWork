@@ -6,8 +6,6 @@ import lecture_detail_high_csv from "./data/lecture_data_high.csv";
 import grade_low_csv from "./data/low.csv";
 import grade_high_csv from "./data/high.csv";
 
-let start=0;
-
 function InputEx() {
   const [Inputs, setInputs] = useState({
     name: "",
@@ -37,8 +35,12 @@ function InputEx() {
     });
   };
 
-  const onInsert = (e) => {
-    start = 1;
+  const onInsert = () => {
+    document.getElementById("leftCenter").removeAttribute("visibility");
+    document.getElementById("leftBelow").removeAttribute("visibility");
+    document.getElementById("leftCenter").removeAttribute("display");
+    document.getElementById("leftBelow").removeAttribute("display");
+    console.log("onInsert!");
   };
 
   return (
@@ -65,7 +67,13 @@ function InputEx() {
         value={goal}
       />
       <br />
-      <input id="name" name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        id="name"
+        name="name"
+        placeholder="이름"
+        onChange={onChange}
+        value={name}
+      />
       <input
         id="major"
         name="major"
@@ -74,7 +82,9 @@ function InputEx() {
         value={major}
       />
       <button onClick={onReset}>초기화</button>
-      <button onClick={onInsert}>입력</button>
+      <button id="showButton" onClick={onInsert}>
+        입력
+      </button>
     </form>
   );
 }
@@ -101,7 +111,9 @@ function Barchart() {
     CredRes.push(parseInt((credData[0].Major / credData[1].Major) * 100));
     CredRes.push(
       parseInt(
-        ((parseInt(credData[0].liberal) + parseInt(credData[0].Other) )/ credData[1].liberal) * 100
+        ((parseInt(credData[0].liberal) + parseInt(credData[0].Other)) /
+          credData[1].liberal) *
+          100
       )
     );
     //Other에 해당했던 부분 해당되는것이 없어 삭제했습니다
@@ -155,7 +167,7 @@ function Barchart() {
       .selectAll(".bar")
       .data(Mydata)
       .join("rect")
-      .attr("class", "bar")
+      .attr("className", "bar")
       .attr("x", (v, i) => i * 120 + 65)
       .attr("y", (v, i) => height - margin.top - v.value * 2.6)
       .attr("fill-opacity", 0.8)
@@ -188,8 +200,8 @@ function Barchart() {
   );
 }
 
-function showDetail(){
-
+function showDetail() {
+  document.getElementById("centerBelow").style.visibility = "visible";
 }
 
 function Recommend({ recommendation }) {
@@ -203,28 +215,26 @@ function Recommend({ recommendation }) {
       stars += "☆";
     }
   }
-  
 
   return (
     <tr>
-      <td >{recommendation.point}</td>
+      <td>{recommendation.point}</td>
       <td>{stars}</td>
       <td onClick={showDetail}>{recommendation.title}</td>
     </tr>
   );
 }
 
-
 let recommendations = Array(6);
 
 const NeedCsv = async () => {
   let file;
-  let gra=2;
+  let gra = 2;
   if (gra <= 2) {
     file = await d3.csv(lecture_detail_low_csv);
   } else {
     file = await d3.csv(lecture_detail_high_csv);
-  }  
+  }
   let a = file;
   for (let i = 0; i < a.length; i++) {
     let tmp = {};
@@ -234,11 +244,10 @@ const NeedCsv = async () => {
     recommendations[i] = tmp;
   }
 };
- 
 
 NeedCsv();
 
-function Recommendation({recommendations}) {
+function Recommendation({ recommendations }) {
   return (
     <div>
       <table className="recotab">
@@ -289,42 +298,34 @@ function ShowLecture() {
     <>
       <div>
         <table id="lecDetailtab">
-          <tbody >
+          <tbody>
             <tr>
-              <th  className="name">
-                강의명
-              </th>
+              <th className="name">강의명</th>
               <td className="name"></td>
             </tr>
             <tr>
               <th className="professor">
-                <a href="https://sites.google.com/view/hcclab" target="_blank">교수</a>
+                <a href="https://sites.google.com/view/hcclab" target="_blank">
+                  교수
+                </a>
               </th>
               <td className="professor"></td>
             </tr>
             <tr>
-              <th  className="process">
-                과정
-              </th>
-              <td  className="process"></td>
+              <th className="process">과정</th>
+              <td className="process"></td>
             </tr>
             <tr>
-              <th  className="credit">
-                학점
-              </th>
+              <th className="credit">학점</th>
               <td className="contents"></td>
             </tr>
             <tr>
-              <th  className="contents">
-                내용
-              </th>
-              <td  className="credit"></td>
+              <th className="contents">내용</th>
+              <td className="credit"></td>
             </tr>
             <tr>
-              <th  className="Review">
-                Review
-              </th>
-              <td  className="Review"></td>
+              <th className="Review">Review</th>
+              <td className="Review"></td>
             </tr>
           </tbody>
         </table>
@@ -342,7 +343,6 @@ function MakeTable() {
     } else {
       file = await d3.csv(grade_high_csv);
     }
-    console.log(file);
     var tr = d3
       .select("#makeTab tbody")
       .selectAll("tr")
@@ -371,10 +371,10 @@ function MakeTable() {
         <thead>
           <tr>
             <th>과목명</th>
-            <th class="credit_right_below" >학점</th>
-            <th class ="process_right_below">이수구분</th>
-            <th class="grade_right_below">성적</th>
-            <th class="again_right_below">재수강여부</th>
+            <th className="credit_right_below">학점</th>
+            <th className="process_right_below">이수구분</th>
+            <th className="grade_right_below">성적</th>
+            <th className="again_right_below">재수강여부</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -399,7 +399,7 @@ function ShowAll() {
         <ShowLecture />
       </div>
       <div id="rightBelow">
-        <MakeTable/>
+        <MakeTable />
       </div>
     </div>
   );
