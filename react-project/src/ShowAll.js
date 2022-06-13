@@ -3,8 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
 import lecture_detail_low_csv from "./data/lecture_data_low.csv";
 import lecture_detail_high_csv from "./data/lecture_data_high.csv";
-
-let start = 0;
+let start=0;
 
 function InputEx() {
   const [Inputs, setInputs] = useState({
@@ -102,7 +101,6 @@ function Barchart() {
         ((parseInt(credData[0].liberal) + parseInt(credData[0].Other) )/ credData[1].liberal) * 100
       )
     );
-    console.log((credData[0].liberal + credData[0].Other ))
     //Other에 해당했던 부분 해당되는것이 없어 삭제했습니다
 
     for (let i = 0; i < CredRes.length; i++) {
@@ -187,42 +185,13 @@ function Barchart() {
   );
 }
 
-const recommendations = [
-  {
-    point: 3,
-    rating: 5,
-    title: "강의명0",
-  },
-  {
-    point: 3,
-    rating: 4,
-    title: "강의명1",
-  },
-  {
-    point: 3,
-    rating: 4,
-    title: "강의명2",
-  },
-  {
-    point: 3,
-    rating: 3,
-    title: "강의명3",
-  },
-  {
-    point: 3,
-    rating: 5,
-    title: "강의명4",
-  },
-  {
-    point: 3,
-    rating: 4,
-    title: "강의명5",
-  },
-];
+function showDetail(){
 
-function Recomend({ recommendation }) {
+}
+
+function Recommend({ recommendation }) {
   let stars = "";
-  let count = recommendation.rating;
+  let count = parseInt(recommendation.rating);
   for (let i = 5; i > 0; i--) {
     if (count !== 0) {
       stars += "★";
@@ -231,17 +200,42 @@ function Recomend({ recommendation }) {
       stars += "☆";
     }
   }
+  
 
   return (
     <tr>
-      <td>{recommendation.point}</td>
+      <td >{recommendation.point}</td>
       <td>{stars}</td>
-      <td>{recommendation.title}</td>
+      <td onClick={showDetail}>{recommendation.title}</td>
     </tr>
   );
 }
 
-function Recommendation({ recommendations }) {
+
+let recommendations = Array(6);
+
+const NeedCsv = async () => {
+  let file;
+  let gra=2;
+  if (gra <= 2) {
+    file = await d3.csv(lecture_detail_low_csv);
+  } else {
+    file = await d3.csv(lecture_detail_high_csv);
+  }  
+  let a = file;
+  for (let i = 0; i < a.length; i++) {
+    let tmp = {};
+    tmp.point = a[i].credit;
+    tmp.rating = a[i].rating;
+    tmp.title = a[i].name;
+    recommendations[i] = tmp;
+  }
+};
+ 
+
+NeedCsv();
+
+function Recommendation({recommendations}) {
   return (
     <div>
       <table className="recotab">
@@ -252,7 +246,7 @@ function Recommendation({ recommendations }) {
         </thead>
         <tbody>
           {recommendations.map((recommendation) => (
-            <Recomend recommendation={recommendation} />
+            <Recommend recommendation={recommendation} />
           ))}
         </tbody>
       </table>
@@ -294,40 +288,40 @@ function ShowLecture() {
         <table id="lecDetailtab">
           <tbody >
             <tr>
-              <th colSpan="2" className="name">
+              <th  className="name">
                 강의명
               </th>
-              <td colSpan="3" className="name"></td>
+              <td className="name"></td>
             </tr>
             <tr>
-              <th colSpan="2" className="professor">
+              <th className="professor">
                 교수
               </th>
-              <td colSpan="3" className="name"></td>
+              <td  className="name"></td>
             </tr>
             <tr>
-              <th colSpan="2" className="process">
+              <th  className="process">
                 과정
               </th>
-              <td colSpan="3" className="process"></td>
+              <td  className="process"></td>
             </tr>
             <tr>
-              <th colSpan="2" className="credit">
+              <th  className="credit">
                 학점
               </th>
-              <td colSpan="3" className="contents"></td>
+              <td className="contents"></td>
             </tr>
             <tr>
-              <th colSpan="2" className="contents">
+              <th  className="contents">
                 내용
               </th>
-              <td colSpan="3" className="credit"></td>
+              <td  className="credit"></td>
             </tr>
             <tr>
-              <th colSpan="2" className="Review">
+              <th  className="Review">
                 Review
               </th>
-              <td colSpan="3" className="Review"></td>
+              <td  className="Review"></td>
             </tr>
           </tbody>
         </table>

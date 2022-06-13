@@ -129,18 +129,18 @@ table.recotab table td:last-child
 }
 #rightBelow table{
   border: 1px solid black;
+  border-collapse: collapse;
+
 }
 #rightBelow th{
   font-size: 17px;
   border: 1px solid black;
-  border-collapse: collapse;
   width: 100px;
 
 }
 #rightBelow td{
   font-size: 14px;
   border: 1px solid black;
-  border-collapse: collapse;
   width: 400px;
 }
 
