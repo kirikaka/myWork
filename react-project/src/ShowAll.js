@@ -3,6 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import dataset_csv from "./data/dataset.csv";
 import lecture_detail_low_csv from "./data/lecture_data_low.csv";
 import lecture_detail_high_csv from "./data/lecture_data_high.csv";
+import grade_low_csv from "./data/low.csv";
+import grade_high_csv from "./data/high.csv";
+
 let start=0;
 
 function InputEx() {
@@ -295,9 +298,9 @@ function ShowLecture() {
             </tr>
             <tr>
               <th className="professor">
-                교수
+                <a href="https://sites.google.com/view/hcclab" target="_blank">교수</a>
               </th>
-              <td  className="name"></td>
+              <td className="professor"></td>
             </tr>
             <tr>
               <th  className="process">
@@ -330,6 +333,56 @@ function ShowLecture() {
   );
 }
 
+function MakeTable() {
+  const needCa = async () => {
+    let file;
+    let gra = 3;
+    if (gra <= 2) {
+      file = await d3.csv(grade_low_csv);
+    } else {
+      file = await d3.csv(grade_high_csv);
+    }
+    console.log(file);
+    var tr = d3
+      .select("#makeTab tbody")
+      .selectAll("tr")
+      .data(file)
+      .enter()
+      .append("tr");
+    var td = tr
+      .selectAll("td")
+      .data(function (d, i) {
+        return Object.values(d);
+      })
+      .enter()
+      .append("td")
+      .text(function (d) {
+        return d;
+      });
+  };
+
+  useEffect(() => {
+    needCa();
+  }, []);
+
+  return (
+    <>
+      <table id="makeTab">
+        <thead>
+          <tr>
+            <th>과목명</th>
+            <th class="credit_right_below" >학점</th>
+            <th class ="process_right_below">이수구분</th>
+            <th class="grade_right_below">성적</th>
+            <th class="again_right_below">재수강여부</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </>
+  );
+}
+
 function ShowAll() {
   return (
     <div id="Allcover">
@@ -342,8 +395,11 @@ function ShowAll() {
       <div id="leftBelow">
         <Recommendation recommendations={recommendations} />
       </div>
-      <div id="rightBelow">
+      <div id="centerBelow">
         <ShowLecture />
+      </div>
+      <div id="rightBelow">
+        <MakeTable/>
       </div>
     </div>
   );

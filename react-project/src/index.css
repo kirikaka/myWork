@@ -111,6 +111,9 @@ table.recotab table td:last-child
   
   
 }
+#lecDetailtab td.professor{
+  cursor:pointer;
+}
 
 #leftBelow{
   position : absolute;
@@ -120,28 +123,70 @@ table.recotab table td:last-child
   border-radius: 40px 40px 40px 40px;
   
 }
-#rightBelow{
+#centerBelow{
   position : absolute;
   left: 540px;
   top: 430px;
   width: 800px;
 
 }
-#rightBelow table{
+#centerBelow table{
   border: 1px solid black;
   border-collapse: collapse;
 
 }
-#rightBelow th{
+#centerBelow th{
   font-size: 17px;
   border: 1px solid black;
   width: 100px;
 
 }
-#rightBelow td{
+#centerBelow td{
   font-size: 14px;
   border: 1px solid black;
   width: 400px;
+
 }
+#rightBelow{
+  position : absolute;
+  left: 1060px;
+  top: 430px;
+  width: 800px;
+}
+#rightBelow table{
+  border: 1px solid black;
+  border-collapse: collapse;
+  table-layout:auto;
+  text-align:center;
+  width: 450px;
+  height: 300px;
+  
+}
+#rightBelow th{
+  font-size: 16px;
+  border: 1px solid black;
+  width: 130px;
+}
+#rightBelow th.process_right_below{
+
+  width: 80px;
+}
+#rightBelow th.credit_right_below{
+
+  width: 50px;
+}
+#rightBelow th.grade_right_below{
+
+  width: 70px;
+}
+#rightBelow th.again_right_below{
+
+  width: 80px;
+} 
+#rightBelow td{
+  font-size: 13.2px;
+  border: 1px solid black;
+}
+
 
 
