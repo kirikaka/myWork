@@ -172,15 +172,6 @@ function BarLinear() {
       .attr("d", (v) => myLine(v))
       .attr("fill", "none")
       .attr("stroke", "red");
-
-    svg
-      .append("text")
-      .attr("class", "y label")
-      .attr("text-anchor", "end")
-      .attr("y", height - 6)
-      .attr("dy", ".100em")
-      .attr("transform", "rotate(-90)")
-      .text("이수 학점");
   }, [data]);
 
   return (
