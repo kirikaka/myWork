@@ -131,7 +131,6 @@ function BarLinear() {
     const xAxis1 = d3.axisBottom(xScale1).ticks(data[0].length);
     svg.select(".x-axis1").style("transform", "translateY(450px)").call(xAxis1);
     const yAxis1 = d3.axisRight(yScale1);
-    var color = d3.scaleOrdinal().range(["#0000FF", "#4169"]);
 
     svg
       .select(".y-axis1")

@@ -146,6 +146,9 @@ table.recotab table td:last-child
   margin-top: auto;
   margin-bottom: auto; */
 }
+#recommend th{
+  background-color: rgb(153, 171, 239)
+}
 
 #points
 {
@@ -177,6 +180,7 @@ table.recotab table td:last-child
 }
 #lecture table th 
 {
+  background-color: rgb(153, 171, 239);
   border-radius: 5px;
   border: 2px solid #707070;
   width: 120px;
@@ -220,6 +224,7 @@ table.recotab table td:last-child
   border-radius: 5px;
   border: 2px solid #707070;
   height: 60px;
+  background-color: rgb(153, 171, 239);
 }
 #semester table thead th
 {
