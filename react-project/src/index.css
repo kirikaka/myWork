@@ -111,9 +111,6 @@ table.recotab table td:last-child
   
   
 }
-#lecDetailtab td.professor{
-  cursor:pointer;
-}
 
 #leftBelow{
   position : absolute;
@@ -124,6 +121,7 @@ table.recotab table td:last-child
   
 }
 #centerBelow{
+  visibility: hidden;
   position : absolute;
   left: 540px;
   top: 430px;

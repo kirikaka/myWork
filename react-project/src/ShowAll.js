@@ -189,7 +189,8 @@ function Barchart() {
 }
 
 function showDetail(){
-
+  let a=document.getElementById("centerBelow");
+  a.setAttribute("visivility","visible");
 }
 
 function Recommend({ recommendation }) {
@@ -287,7 +288,7 @@ function ShowLecture() {
 
   return (
     <>
-      <div>
+      <div id="Detail_lecture">
         <table id="lecDetailtab">
           <tbody >
             <tr>
