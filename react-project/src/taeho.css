@@ -110,66 +110,61 @@ table.recotab table td:last-child
 {
   display: grid;
   height: 100vh;
-  grid-template-columns: 660px 600px 400px;
-  grid-template-rows: 80px 400px 300px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.46875fr 1.5fr 1.03125fr;
   grid-template-areas: 
   "profile points points"
   "progress points points"
   "recommend lecture semester";
-  grid-gap: 20px;
+  grid-gap: 30px;
 }
 
 #profile
 {
   background: #ffffff;
   grid-area: profile;
-  margin-left: 30px;
-  margin-right: 60px;
-  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #progress
 {
-  visibility: hidden;
   background: #ffffff;
   grid-area: progress;
-  /* margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-  margin-bottom: auto; */
+  margin-bottom: auto;
 }
 
 #recommend
 {
-  visibility: hidden;
-
   grid-area: recommend;
-  /* margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-  margin-bottom: auto; */
+  margin-bottom: auto;
 }
-#recommend th{
-  background-color: rgb(153, 171, 239)
-}
+
 #points
 {
-  visibility: hidden;
   background: #ffffff;
   grid-area: points;
-  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
-
-
 
 #lecture
 {
-  visibility: hidden;
   grid-area: lecture;
-  /* margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-  margin-bottom: auto; */
+  margin-bottom: auto;
 }
 #lecture table
 {
@@ -184,7 +179,6 @@ table.recotab table td:last-child
 }
 #lecture table th 
 {
-  background-color: rgb(153, 171, 239);
   border-radius: 5px;
   border: 2px solid #707070;
   width: 120px;
@@ -206,7 +200,6 @@ table.recotab table td:last-child
 
 #semester
 {
-  visibility: hidden;
   grid-area: semester;
   margin-left: auto;
   margin-right: auto;
@@ -229,7 +222,6 @@ table.recotab table td:last-child
   border-radius: 5px;
   border: 2px solid #707070;
   height: 60px;
-  background-color: rgb(153, 171, 239);
 }
 #semester table thead th
 {
