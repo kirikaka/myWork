@@ -130,7 +130,6 @@ table.recotab table td:last-child
 
 #progress
 {
-  visibility: hidden;
   background: #ffffff;
   grid-area: progress;
   /* margin-left: auto;
@@ -141,7 +140,6 @@ table.recotab table td:last-child
 
 #recommend
 {
-  visibility: hidden;
 
   grid-area: recommend;
   /* margin-left: auto;
@@ -154,7 +152,6 @@ table.recotab table td:last-child
 }
 #points
 {
-  visibility: hidden;
   background: #ffffff;
   grid-area: points;
   margin-top: 50px;
@@ -164,7 +161,6 @@ table.recotab table td:last-child
 
 #lecture
 {
-  visibility: hidden;
   grid-area: lecture;
   /* margin-left: auto;
   margin-right: auto;
@@ -206,7 +202,6 @@ table.recotab table td:last-child
 
 #semester
 {
-  visibility: hidden;
   grid-area: semester;
   margin-left: auto;
   margin-right: auto;
