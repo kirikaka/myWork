@@ -114,29 +114,5 @@ function Barchart() {
     );
   }
   
-  function showDetail() {
-    document.getElementById("centerBelow").style.visibility = "visible";
-  }
-  
-  function Recommend({ recommendation }) {
-    let stars = "";
-    let count = parseInt(recommendation.rating);
-    for (let i = 5; i > 0; i--) {
-      if (count !== 0) {
-        stars += "★";
-        count -= 1;
-      } else {
-        stars += "☆";
-      }
-    }
-  
-    return (
-      <tr>
-        <td>{recommendation.point}</td>
-        <td>{stars}</td>
-        <td onClick={showDetail}>{recommendation.title}</td>
-      </tr>
-    );
-  }
 
   export default Barchart;

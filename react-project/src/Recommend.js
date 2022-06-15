@@ -1,53 +1,67 @@
 import * as d3 from "d3";
-import lecture_detail_low_csv from "./data/lecture_data_low.csv";
-import lecture_detail_high_csv from "./data/lecture_data_high.csv";
+import lecture_data from "./data/lecture_dataset.csv";
+import { useState, useRef, useEffect } from "react";
 
 
-let recommendations = Array(6);
+function Recommendation(props) {
+  const needCa = async () => {
+    let gra = props.grade;
+    let semester = props.semester;
+    console.log(gra);
 
-function Recommend({ recommendation }) {
-  let stars = "";
-  let count = parseInt(recommendation.rating);
-  for (let i = 5; i > 0; i--) {
-    if (count !== 0) {
-      stars += "★";
-      count -= 1;
-    } else {
-      stars += "☆";
+    let file = await d3.csv(lecture_data);
+    const file_filter = file.filter(
+      (v) => v["grade"] == gra && v["semester"] == semester
+    );
+    const credit_data = file_filter.map((v) => v.credit);
+    const rating_data = file_filter.map((v) => v.rating);
+    const name_data = file_filter.map((v) => v.name);
+
+    const needData = [];
+
+    for (let i = 0; i < credit_data.length; i++) {
+      let temp = {};
+      temp.credit = credit_data[i];
+      let stars = "";
+      let count = parseInt(rating_data[i]);
+      for (let i = 5; i > 0; i--) {
+        if (count !== 0) {
+          stars += "★";
+          count -= 1;
+        } else {
+          stars += "☆";
+        }
+      }
+      temp.rating = stars;
+      temp.name = name_data[i];
+      needData.push(temp);
     }
-  }
+
+
+    var tr = d3
+      .select(".recotab tbody")
+      .selectAll("tr")
+      .data(needData)
+      .enter()
+      .append("tr");
+    var td = tr
+      .selectAll("td")
+      .data(function (d, i) {
+        return Object.values(d);
+      })
+      .enter()
+      .append("td")
+      .text(function (d) {
+        return d;
+      });
+  };
+
+  useEffect(() => {
+    needCa()
+  }, []);
 
   return (
-    <tr>
-      <td>{recommendation.point}</td>
-      <td>{stars}</td>
-      <td >{recommendation.title}</td>
-    </tr>
-  );
-}
-
-// const NeedCsv = async () => {
-//   let file;
-//   let gra = 2;
-//   if (gra <= 2) {
-//     file = await d3.csv(lecture_detail_low_csv);
-//   } else {
-//     file = await d3.csv(lecture_detail_high_csv);
-//   }
-//   let a = file;
-//   for (let i = 0; i < a.length; i++) {
-//     let tmp = {};
-//     tmp.point = a[i].credit;
-//     tmp.rating = a[i].rating;
-//     tmp.title = a[i].name;
-//     recommendations[i] = tmp;
-//   }
-// };
-
-// NeedCsv();
-
-function Recommendation({ recommendations }) {
-    return (
+    <>
       <div>
         <table className="recotab">
           <thead>
@@ -55,14 +69,11 @@ function Recommendation({ recommendations }) {
             <th className="star">평점</th>
             <th className="title">강의명</th>
           </thead>
-          <tbody>
-            {recommendations.map((recommendation) => (
-              <Recommend recommendation={recommendation} />
-            ))}
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
-    );
-  }
+    </>
+  );
+}
 
 export default Recommendation;

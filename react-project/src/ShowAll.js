@@ -7,33 +7,32 @@ import Recommendation from "./Recommend.js";
 import ShowLecture from "./Lecture";
 import MakeTable from "./Semester.js";
 
-const recommendations = [
-  {
-  point: 3, 
-  rating: 5, 
-  title: "강의명0"
-},
-{
-  point: 3, 
-  rating: 4, 
-  title: "강의명1"
-},
-{
-  point: 3, 
-  rating: 4, 
-  title: "강의명2"
-},
-{
-  point: 3, 
-  rating: 3, 
-  title: "강의명3"
-}]
+
 
 function ShowAll() {
+  let information={
+    name: "",
+    major: "",
+    stuNum: "",
+    grade: "",
+    goal: "",
+    semester:"",
+  };
+  const getInfo=(x)=>{
+    console.log(x.name)
+    
+    information.name=x.name
+    information.major=x.major
+    information.stuNum=x.stuNum
+    information.grade=x.grade
+    information.goal=x.goal
+    information.semester=x.semester
+  };
+  console.log(information)
   return (
     <div className="container">
       <div id="profile">
-        <InputEx />
+        <InputEx getProfile={getInfo}/>
       </div>
       <div id="points">
         <BarLinear />
@@ -42,7 +41,7 @@ function ShowAll() {
         <Barchart />
       </div>
       <div id="recommend">
-        <Recommendation  recommendations={recommendations} />
+        <Recommendation grade={information.grade} semester={information.semester}/>
       </div>
       <div id="lecture">
         <ShowLecture />

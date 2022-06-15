@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #EEEEF3;
+  background: lightgrey;
 }
 
 code {
@@ -19,7 +19,7 @@ code {
 }
 
 #goal{
-  width: 60px;
+  width: 70px;
 }
 
 .recotab
@@ -237,4 +237,13 @@ table.recotab table td:last-child
   border: 1px solid #707070;
   text-align: center;
   font-size: 15px;
+}
+#pointChart rect.bar {
+  fill-opacity: 0.8;
+}
+#pointChart rect.bar :hover {
+  fill-opacity: 1
+}
+#Bar rect:hover {
+  fill-opacity: 1
 }

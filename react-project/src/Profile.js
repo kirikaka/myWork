@@ -1,15 +1,18 @@
 import { useState } from "react";
 
-function InputEx() {
+function InputEx({getProfile}) {
     const [Inputs, setInputs] = useState({
       name: "",
       major: "",
       stuNum: "",
       grade: "",
+      semester:"",
       goal: "",
     });
   
-    const { name, major, stuNum, grade, goal } = Inputs;
+    
+
+    const { name, major, stuNum, grade,semester, goal } = Inputs;
   
     const onChange = (e) => {
       const { name, value } = e.target;
@@ -18,7 +21,13 @@ function InputEx() {
         [name]: value,
       });
     };
-  
+
+    const InsetInfo=(e)=>{
+      e.preventDefault();
+      getProfile(Inputs)
+      
+    }
+
     const onReset = () => {
       setInputs({
         name: "",
@@ -26,15 +35,8 @@ function InputEx() {
         stuNum: "",
         grade: "",
         goal: "",
+        semester:"",
       });
-    };
-  
-    const onInsert = () => {
-      document.getElementById("leftCenter").removeAttribute("visibility");
-      document.getElementById("leftBelow").removeAttribute("visibility");
-      document.getElementById("leftCenter").removeAttribute("display");
-      document.getElementById("leftBelow").removeAttribute("display");
-      console.log("onInsert!");
     };
   
     return (
@@ -54,11 +56,11 @@ function InputEx() {
           value={grade}
         />
         <input
-          id="goal"
-          name="goal"
-          placeholder="목표 평점"
+          id="semester"
+          name="semester"
+          placeholder="학기"
           onChange={onChange}
-          value={goal}
+          value={semester}
         />
         <br />
         <input
@@ -75,8 +77,15 @@ function InputEx() {
           onChange={onChange}
           value={major}
         />
+        <input
+          id="goal"
+          name="goal"
+          placeholder="목표 평점"
+          onChange={onChange}
+          value={goal}
+        />
         <button onClick={onReset}>초기화</button>
-        <button id="showButton" onClick={onInsert}>
+        <button id="showButton" onClick={InsetInfo} >
           입력
         </button>
       </form>
