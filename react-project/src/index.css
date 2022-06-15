@@ -238,18 +238,7 @@ table.recotab table td:last-child
   text-align: center;
   font-size: 15px;
 }
-<<<<<<< HEAD
 #semester table tbody tr:first-child
 {
   text-decoration-color: red;
-=======
-#pointChart rect.bar {
-  fill-opacity: 0.8;
-}
-#pointChart rect.bar :hover {
-  fill-opacity: 1
-}
-#Bar rect:hover {
-  fill-opacity: 1
->>>>>>> fbe7890d2ff71fef0ec079fd52148db251cf0a71
 }

@@ -2,12 +2,12 @@ import * as d3 from "d3";
 import lecture_data from "./data/lecture_dataset.csv";
 import { useState, useRef, useEffect } from "react";
 
-
 function Recommendation(props) {
-  const needCa = async () => {
-    let gra = props.grade;
-    let semester = props.semester;
-    console.log(gra);
+  const [NeedData, setNeedData] = useState([]);
+
+  const NeedCa = async () => {
+    let gra = props.props.grade;
+    let semester = props.props.semester;
 
     let file = await d3.csv(lecture_data);
     const file_filter = file.filter(
@@ -18,7 +18,6 @@ function Recommendation(props) {
     const name_data = file_filter.map((v) => v.name);
 
     const needData = [];
-
     for (let i = 0; i < credit_data.length; i++) {
       let temp = {};
       temp.credit = credit_data[i];
@@ -37,11 +36,16 @@ function Recommendation(props) {
       needData.push(temp);
     }
 
+    setNeedData([...needData]);
+  };
+
+  useEffect(() => {
+    NeedCa();
 
     var tr = d3
       .select(".recotab tbody")
       .selectAll("tr")
-      .data(needData)
+      .data(NeedData)
       .enter()
       .append("tr");
     var td = tr
@@ -54,11 +58,7 @@ function Recommendation(props) {
       .text(function (d) {
         return d;
       });
-  };
-
-  useEffect(() => {
-    needCa()
-  }, []);
+  }, [NeedData]);
 
   return (
     <>
