@@ -7,28 +7,6 @@ import Recommendation from "./Recommend.js";
 import ShowLecture from "./Lecture";
 import MakeTable from "./Semester.js";
 
-const recommendations = [
-  {
-  point: 3, 
-  rating: 5, 
-  title: "강의명0"
-},
-{
-  point: 3, 
-  rating: 4, 
-  title: "강의명1"
-},
-{
-  point: 3, 
-  rating: 4, 
-  title: "강의명2"
-},
-{
-  point: 3, 
-  rating: 3, 
-  title: "강의명3"
-}]
-
 function ShowAll() {
   return (
     <div className="container">
