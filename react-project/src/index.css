@@ -238,3 +238,7 @@ table.recotab table td:last-child
   text-align: center;
   font-size: 15px;
 }
+#semester table tbody tr:first-child
+{
+  text-decoration-color: red;
+}
