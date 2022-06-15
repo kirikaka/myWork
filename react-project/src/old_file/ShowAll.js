@@ -1,34 +1,41 @@
 import * as d3 from "d3";
 import { useState, useRef, useEffect } from "react";
-import InputEx from "./Profile.js";
-import BarLinear from "./Points.js";
-import Barchart from "./Progress.js";
-import Recommendation from "./Recommend.js";
-import ShowLecture from "./Lecture";
-import MakeTable from "./Semester.js";
+import dataset_csv from "./data/dataset.csv";
+import lecture_detail_low_csv from "./data/lecture_data_low.csv";
+import lecture_detail_high_csv from "./data/lecture_data_high.csv";
+import d3_freshman from "./data/d3_freshman.csv";
+import grade_low_csv from "./data/low.csv";
+import grade_high_csv from "./data/high.csv";
+import lecture_data from "./data/lecture_dataset.csv"
 
-
-
-function ShowAll() {
-  let information={
+function InputEx() {
+  const [Inputs, setInputs] = useState({
     name: "",
     major: "",
     stuNum: "",
     grade: "",
     goal: "",
-    semester:"",
+  });
+
+  const { name, major, stuNum, grade, goal } = Inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...Inputs,
+      [name]: value,
+    });
   };
-  const getInfo=(x)=>{
-    console.log(x.name)
-    
-    information.name=x.name
-    information.major=x.major
-    information.stuNum=x.stuNum
-    information.grade=x.grade
-    information.goal=x.goal
-    information.semester=x.semester
+
+  const onReset = () => {
+    setInputs({
+      name: "",
+      major: "",
+      stuNum: "",
+      grade: "",
+      goal: "",
+    });
   };
-<<<<<<< HEAD
 
   const onInsert = () => {
     document.getElementById("leftCenter").removeAttribute("visibility");
@@ -110,6 +117,7 @@ function BarLinear() {
     [15, 18, 15, 18, 18, 21, 12, 12],
     [2.7, 3.3, 3.8, 3.8, 4, 4.3, 4, 4.5],
   ]);
+
   const svgRef = useRef();
 
   useEffect(() => {
@@ -291,8 +299,53 @@ function Barchart() {
   );
 }
 
-function showDetail() {
-  document.getElementById("centerBelow").style.visibility = "visible";
+function NextLecture(){
+  const needCa = async () => {
+    let file;
+    let gra = 3;
+    if (gra <= 2) {
+      file = await d3.csv(lecture_data);
+    } else {
+      file = await d3.csv(grade_high_csv);
+    }
+    var tr = d3
+      .select("#makeTab tbody")
+      .selectAll("tr")
+      .data(file)
+      .enter()
+      .append("tr");
+    var td = tr
+      .selectAll("td")
+      .data(function (d, i) {
+        return Object.values(d);
+      })
+      .enter()
+      .append("td")
+      .text(function (d) {
+        return d;
+      });
+  };
+
+  useEffect(() => {
+    needCa();
+  }, []);
+
+  return (
+    <>
+      <table id="makeTab">
+        <thead>
+          <tr>
+            <thead>
+              <th className="point">학점</th>
+              <th className="star">평점</th>
+              <th className="title">강의명</th>
+            </thead>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </>
+  );
 }
 
 function Recommend({ recommendation }) {
@@ -320,7 +373,7 @@ let recommendations = Array(6);
 
 const NeedCsv = async () => {
   let file;
-  let gra = 3;
+  let gra = 2;
   if (gra <= 2) {
     file = await d3.csv(lecture_detail_low_csv);
   } else {
@@ -360,7 +413,7 @@ function Recommendation({ recommendations }) {
 function ShowLecture() {
   const readCsv = async () => {
     let file;
-    let gra = 3;
+    let gra = 2;
     if (gra <= 2) {
       file = await d3.csv(lecture_detail_low_csv);
     } else {
@@ -387,7 +440,7 @@ function ShowLecture() {
 
   return (
     <>
-      <div>
+      <div id="Detail_lecture">
         <table id="lecDetailtab">
           <tbody>
             <tr>
@@ -396,7 +449,9 @@ function ShowLecture() {
             </tr>
             <tr>
               <th className="professor">
-                <a>교수</a>
+                <a href="https://sites.google.com/view/hcclab" target="_blank">
+                  교수
+                </a>
               </th>
               <td className="professor"></td>
             </tr>
@@ -430,7 +485,7 @@ function MakeTable() {
     if (gra <= 2) {
       file = await d3.csv(grade_low_csv);
     } else {
-      file = await d3.csv(grade_low_csv);
+      file = await d3.csv(grade_high_csv);
     }
     var tr = d3
       .select("#makeTab tbody")
@@ -473,13 +528,10 @@ function MakeTable() {
 }
 
 function ShowAll() {
-=======
-  console.log(information)
->>>>>>> fbe7890d2ff71fef0ec079fd52148db251cf0a71
   return (
     <div className="container">
       <div id="profile">
-        <InputEx getProfile={getInfo}/>
+        <InputEx />
       </div>
       <div id="points">
         <BarLinear />
@@ -488,7 +540,7 @@ function ShowAll() {
         <Barchart />
       </div>
       <div id="recommend">
-        <Recommendation grade={information.grade} semester={information.semester}/>
+        <Recommendation recommendations={recommendations} />
       </div>
       <div id="lecture">
         <ShowLecture />

@@ -20,6 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -27,6 +28,8 @@
       "react-app/jest"
     ]
   },
+  "homepage": "http://kirikaka.github.io/react-project",
+
   "browserslist": {
     "production": [
       ">0.2%",
@@ -43,5 +46,9 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh": "^2.8.9",
+    "pages": "^0.0.16"
+  }
 }

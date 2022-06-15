@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #EEEEF3;
+  background: lightgrey;
 }
 
 code {
@@ -19,7 +19,7 @@ code {
 }
 
 #goal{
-  width: 60px;
+  width: 70px;
 }
 
 .recotab
@@ -140,6 +140,7 @@ table.recotab table td:last-child
 
 #recommend
 {
+
   grid-area: recommend;
   /* margin-left: auto;
   margin-right: auto;
@@ -149,7 +150,6 @@ table.recotab table td:last-child
 #recommend th{
   background-color: rgb(153, 171, 239)
 }
-
 #points
 {
   background: #ffffff;
@@ -238,7 +238,18 @@ table.recotab table td:last-child
   text-align: center;
   font-size: 15px;
 }
+<<<<<<< HEAD
 #semester table tbody tr:first-child
 {
   text-decoration-color: red;
+=======
+#pointChart rect.bar {
+  fill-opacity: 0.8;
+}
+#pointChart rect.bar :hover {
+  fill-opacity: 1
+}
+#Bar rect:hover {
+  fill-opacity: 1
+>>>>>>> fbe7890d2ff71fef0ec079fd52148db251cf0a71
 }
