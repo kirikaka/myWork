@@ -326,7 +326,7 @@ let recommendations = Array(6);
 
 const NeedCsv = async () => {
   let file;
-  let gra = 2;
+  let gra = 3;
   if (gra <= 2) {
     file = await d3.csv(lecture_detail_low_csv);
   } else {
@@ -366,7 +366,7 @@ function Recommendation({ recommendations }) {
 function ShowLecture() {
   const readCsv = async () => {
     let file;
-    let gra = 2;
+    let gra = 3;
     if (gra <= 2) {
       file = await d3.csv(lecture_detail_low_csv);
     } else {
@@ -402,9 +402,7 @@ function ShowLecture() {
             </tr>
             <tr>
               <th className="professor">
-                <a href="https://sites.google.com/view/hcclab" target="_blank">
-                  교수
-                </a>
+                <a>교수</a>
               </th>
               <td className="professor"></td>
             </tr>
@@ -438,7 +436,7 @@ function MakeTable() {
     if (gra <= 2) {
       file = await d3.csv(grade_low_csv);
     } else {
-      file = await d3.csv(grade_high_csv);
+      file = await d3.csv(grade_low_csv);
     }
     var tr = d3
       .select("#makeTab tbody")
