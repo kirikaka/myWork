@@ -4,10 +4,15 @@ import { useState, useRef, useEffect } from "react";
 
 function Recommendation(props) {
   const [NeedData, setNeedData] = useState([]);
+  
+  
 
   const NeedCa = async () => {
-    let gra = props.props.grade;
-    let semester = props.props.semester;
+
+    let gra= props.info.grade;
+    let semester = props.info.semester;
+    
+
 
     let file = await d3.csv(lecture_data);
     const file_filter = file.filter(
@@ -42,6 +47,13 @@ function Recommendation(props) {
   useEffect(() => {
     NeedCa();
 
+    const getName=(e)=>{
+      let context=e.target.innerText;
+      props.needName(context);
+      
+    };
+
+
     var tr = d3
       .select(".recotab tbody")
       .selectAll("tr")
@@ -57,7 +69,10 @@ function Recommendation(props) {
       .append("td")
       .text(function (d) {
         return d;
-      });
+      })
+    var td=  d3.selectAll("td").on("click",getName)
+
+
   }, [NeedData]);
 
   return (

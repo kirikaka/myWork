@@ -72,7 +72,7 @@ function Barchart() {
       svg.select(".x-axis").style("transform", "translateY(380px)").call(xAxis);
   
       const yAxis = d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]);
-      svg.select(".y-axis").style("transform", "translateX(25px)").call(yAxis);
+      svg.select(".y-axis").style("transform", "translateX(45px)").call(yAxis);
   
       var color = d3.scaleOrdinal().range(["#6667ab", "#ad7558", "#6bab55"]);
       // apply axis to canvas
@@ -88,6 +88,9 @@ function Barchart() {
         .attr("width", 50)
         .attr("fill", color)
         .attr("height", (v, i) => v.value * 3.6);
+
+      svg.selectAll("text")
+         .attr("font-size","16px");
   
       // add text
       svg
@@ -100,7 +103,7 @@ function Barchart() {
         .attr("y", (v) => y(v.value) - 8) //
         .attr("fill", "black")
         .attr("font-family", "Tahoma")
-        .attr("font-size", "12px")
+        //.attr("font-size", "12px")
         .attr("text-anchor", "middle");
     }, [Mydata]);
   

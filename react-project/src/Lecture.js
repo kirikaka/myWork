@@ -1,35 +1,49 @@
 import * as d3 from "d3";
-import { useEffect } from "react";
-import lecture_detail_low_csv from "./data/lecture_data_low.csv";
-import lecture_detail_high_csv from "./data/lecture_data_high.csv";
+import { useEffect, useState } from "react";
+import lecture_data from "./data/lecture_dataset.csv";
 
-function ShowLecture() {
+
+function ShowLecture(props) {
+  const [Data,setData]=useState([]);
+
     const readCsv = async () => {
-      let file;
-      let gra = 2;
-      if (gra <= 2) {
-        file = await d3.csv(lecture_detail_low_csv);
-      } else {
-        file = await d3.csv(lecture_detail_high_csv);
-      }
-      let need = file[0];
+      let needName=""
+      needName=props.name.join('')
+
+      let file =await d3.csv(lecture_data);
+
+      let needFile=file.filter((v)=>v["name"]==needName)
+
+
       let val = [];
-      val.push(need.name);
-      val.push(need.professor);
-      val.push(need.process);
-      val.push(need.credit);
-      val.push(need.contents);
-      val.push(need.review);
-  
-      d3.select("#lecDetailtab")
-        .selectAll("td")
-        .data(val)
-        .html((d, i) => d);
+      
+      if(needFile[0]!=undefined){
+        val.push(needFile[0].name);
+        val.push(needFile[0].professor);
+        val.push(needFile[0].process);
+        val.push(needFile[0].credit);
+        val.push(needFile[0].contents);
+        val.push(needFile[0].review);
+      
+
+      }
+      // console.log(val)
+
+
+      setData([...val])
+      
     };
   
     useEffect(() => {
       readCsv();
-    }, []);
+
+
+      d3.select("#lecDetailtab")
+        .selectAll("td")
+        .data(Data)
+        .html((d, i) => d);
+
+    }, [Data]);
   
     return (
       <>
@@ -41,11 +55,7 @@ function ShowLecture() {
                 <td className="name"></td>
               </tr>
               <tr>
-                <th className="professor">
-                  <a href="https://sites.google.com/view/hcclab" target="_blank">
-                    교수
-                  </a>
-                </th>
+                <th className="professor">교수</th>
                 <td className="professor"></td>
               </tr>
               <tr>

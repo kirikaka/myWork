@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function InputEx({ props }) {
+function InputEx({ getProfile }) {
   const [Inputs, setInputs] = useState({
     name: "",
     major: "",
@@ -23,7 +23,6 @@ function InputEx({ props }) {
   const InsetInfo = (e) => {
     e.preventDefault();
     getProfile(Inputs);
-    props.setData({ Inputs });
   };
 
   const onReset = () => {
@@ -49,14 +48,14 @@ function InputEx({ props }) {
       <input
         id="grade"
         name="grade"
-        placeholder="학년"
+        placeholder="다음 학년"
         onChange={onChange}
         value={grade}
       />
       <input
         id="semester"
         name="semester"
-        placeholder="학기"
+        placeholder="다음 학기"
         onChange={onChange}
         value={semester}
       />
