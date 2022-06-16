@@ -110,9 +110,7 @@ import grade_data from "./data/mygrade.csv";
         .x((v, i) => xScale2(i) + 20)
         .y((v) => yScale2(v) + 15);
       
-        const refresh=(e)=>{
-        
-        }
+      
 
       svg
         .selectAll(".path")
@@ -140,8 +138,7 @@ import grade_data from "./data/mygrade.csv";
         .attr("y",height-540)
         .attr("dy", ".100em")
         .attr("transform", "rotate(-90)")
-        .text("평점(누르면 초기화)")
-        .on("click",refresh);
+        .text("평점");
       
       
     }, [graInfo]);
