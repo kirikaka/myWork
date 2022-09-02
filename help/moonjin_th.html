@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ko.one 원격 진료 서비스</title>
+
+    <style>
+        /* main Styles */
+        body {
+            background: #fafafa;
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        a { text-decoration: none; }
+
+        .container {
+            width: 1000px;
+            margin: auto;
+        }
+
+        h1 { text-align:center; margin-top:150px;}
+
+        /* Navigation Styles */
+
+        nav { background: #A9D18E; }
+
+        nav ul {
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: rgb(0, 0, 0);
+            display: block;
+            font-size: 18px;
+            padding: 15px 14px;
+            transition: 0.3s linear;
+        }
+
+        nav ul li:hover { background: #7F7F7F; }
+
+        
+        nav .fa.fa-angle-down { margin-left: 6px; }
+
+        .moonjin {
+            width: 100%;
+	        padding: 0;
+	        text-align: center;
+	        position: absolute;
+            color: black;
+            font-size: 20px;
+	        left: 50%;
+	        transform: translate( -50%, 50% );
+        }
+        .first_line {
+            font-size: 20px;
+        }
+        .id_input{
+            display: inline-block;
+        }
+        table tbody td{
+            border-color: #7F7F7F;
+            border-style: dotted ;
+            text-size-adjust: adjust;
+            border-collapse:collapse ;
+            font-size: 18px;
+            width: 180px;
+
+        }
+        table{
+            position: absolute;
+            transform: translate( 350px, 300px );
+            border-collapse:collapse ;
+            text-align: left;
+            border-color: white;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><b>Ko.one</b></li>
+                <li><a href="#">사용가이드</a></li>
+                <li><a href="#">병원 찾기</a></li>
+                <li> <a href="#">진료 접수</a></li>
+                <li> <a href="#">문진표 작성</a></li>
+                <li> <a href="#">마이 페이지</a></li>
+    
+        </div>
+    
+    </nav>
+
+    <div class="moonjin">
+        <b>문진표 작성</b>
+
+        <div class = "first_line">
+            <div class="id_input">1. 성명 <br><input  id = "input1" type="text" name="query"></div>
+            <div class="id_input">2. 주민등록번호<br><input  id = "input1" type="text" name="query"></div>
+            <div class="id_input">3. 연락처  <br><input  id = "input1" type="text" name="query"></div>
+            <div class="id_input">4. 주소 <br><input  id = "input1" type="text" name="query"></div>
+        </div>
+
+        <div class = "second_line">
+            5. 과거에 앓았던 질병
+            <table>
+                <tbody>
+                    <tr>   
+                        <td> <input type="checkbox" name="checkedValue" value="고/저혈압"/>
+                        고/저혈압 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="당뇨"/>
+                        당뇨 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="없음"/>
+                        없음 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="심장질환"/>
+                        심장질환 </td>
+
+                    </tr>
+                    <tr>   
+                        <td> <input type="checkbox" name="checkedValue" value="뇌졸증"/>
+                        뇌졸증 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="비염"/>
+                        비염 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="류마티스성 질환"/>
+                        류마티스성 질환 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="위장질환"/>
+                        위장질환 </td>
+
+                    </tr>
+                    <tr>   
+                        <td> <input type="checkbox" name="checkedValue" value="관절염"/>
+                        관절염 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="골다공증"/>
+                        골다공증 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="혈액질환"/>
+                        혈액질환 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="갑상선질환"/>
+                        갑상선질환 </td>
+
+                    </tr>
+                    <tr>   
+                        <td> <input type="checkbox" name="checkedValue" value="천식"/>
+                        천식 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="결핵"/>
+                        결핵 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="빈혈"/>
+                        빈혈 </td>
+                        <td> <input type="checkbox" name="checkedValue" value="혈우병"/>
+                        혈우병 </td>
+
+                    </tr>
+                    <tr>   
+                        <td> <input type="checkbox" name="checkedValue" value="신장질환"/>
+                        신장질환 </td>
+                        <td colspan="3"> <input type="checkbox" name="checkedValue" value="기타 (        )"/>
+                        기타 (        ) </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "third_line">
+            6. 약 부작용
+                <input type="checkbox" name="checkedValue" value="천식">예 
+                <input type="checkbox" name="checkedValue" value="결핵">아니오
+        </div>
+    </div>
+    
+    
+</body>
+</html>
