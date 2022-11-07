@@ -1,1 +1,12 @@
-print("반가워요 파이썬")
+a=int(input("첫 번째 숫자를 입력하세요 : "))
+b=int(input("두 번째 숫자를 입력하세요 : "))
+result=a+b
+print(a,"+",b,"=",result)
+result=a-b
+print(a,"-",b,"=",result)
+result=a*b
+print(a,"*",b,"=",result)
+result=a/b
+print(a,"/",b,"=",int(result))
+result=str(a)+str(b)
+print("문자열 더하기 ",a,"+",b,"=",str(result))
