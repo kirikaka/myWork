@@ -17,3 +17,12 @@ print("20값의 위치 : %d " %myList.index(20))
 
 myList.insert(2,222)
 print("insert(2,222) 후의 리스트 : %s" %myList)
+
+myList.remove(222)
+print("remove(222) 후의 리스트 : %s" %myList)
+
+myList.extend([77,88,99])
+print("extend([77,88,99])후의 리스트 : %s"%myList)
+
+print("77값의 개수 : %d"%myList.count(77))
+
